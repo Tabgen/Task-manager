@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <img src="https://static.vecteezy.com/system/resources/previews/001/191/989/non_2x/circle-logo-png.png" class="logo">
+            <nav>
+                <ul id="menuList">
+                    <li><a href="oppskrifter.html">Mat</a></li>
+                    <li><a href="oppskrifter.html">Oppskrifter</a></li>
+                    <li><a href="">Middagstips</a></li>
+                    <li><a href="">Kosthold</a></li>
+                </ul>
+            </nav>
+            <img src="https://cdn-icons-png.flaticon.com/512/56/56763.png" class="menu-icon" onclick="togglemenu()">
+        </div>
+    </header>
+    
+    <main>
+
+        <div class="actions">
+            <button id="task">New task</button>
+
+                <div class="taskforum" id="taskforum">
+                    <form class="createtask">
+                        <h2>Task name</h2>
+                        <input type="text" id="tname" name="tname">
+                        <h2>Task description</h2>
+                        <textarea id="tdescription" name="tdescription" rows="8" cols="10">
+                        </textarea><br><br>
+                        <input type="submit" value="create">
+                        <button id="cancel">cancel</button>
+                    </form>
+                </div>
+
+            <button>New category</button>
+        </div>
+
+        <div class="container" id="tasks">
+            <h2>Tasks</h2>
+        </div>
+
+        <div class="container" id="progress">
+            <h2>In progress</h2>
+        </div>
+
+        <div class="container" id="complete">
+            <h2>completed</h3>
+        </div>
+
+    </main>
+
+
+    <script src="app.js"></script>
+
+
+
+
+</body>
+</html>
+</body>
+</html>
