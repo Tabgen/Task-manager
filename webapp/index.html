@@ -32,28 +32,41 @@
         </div>
     </header>
     
-    <main>
+    <main id="main">
 
         <div class="actions">
             <button id="task">New task</button>
-
+                
                 <div class="taskforum" id="taskforum">
+
                     <form class="createtask">
+
                         <h2>Task name</h2>
+
                         <input type="text" id="tname" name="tname">
+
                         <h2>Task description</h2>
-                        <textarea id="tdescription" name="tdescription" rows="8" cols="10">
-                        </textarea><br><br>
-                        <input type="submit" value="create">
+
+                        <textarea id="tdescription" name="tdescription" rows="8" cols="10"></textarea>
+
+                        <div>
+                            <input type="button" id="bt" value="Save data to file" onclick="saveFile()" />
+                        </div>
+
                         <button id="cancel">cancel</button>
+
                     </form>
+
                 </div>
 
-            <button>New category</button>
+            <button id="category">New category</button>
         </div>
 
-        <div class="container" id="tasks">
+        <div class="container" id="tasks" ondrop="drop(event)" ondragover="allowDrop(event)" ondragstart="dragStart(event)">
             <h2>Tasks</h2>
+            <div>
+                <p id="result">
+            </div>
         </div>
 
         <div class="container" id="progress">

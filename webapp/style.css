@@ -60,9 +60,10 @@ main {
 .container {
     display:flex;
     text-align: left;
-    height: 100%;
+    height: 600px;
     width: 400px;
     flex-direction: column;
+    background-color: lightgray;
 }
 
 .container h2 {
@@ -143,7 +144,6 @@ form input {
 .show {
     display: block;
 }
-
 
 
 
