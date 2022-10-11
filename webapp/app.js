@@ -16,32 +16,34 @@ function togglemenu() {
     }
 }
 
-// div.ondragstart=dragStart(event); funke ikke må finne fiks
+
+// create droppable div
 function taskcreation() {
     var div = document.createElement('div');
-    div.id = 'tbox';
+    div.id = 'drag1';
     div.innerHTML = "task name" + " " + "task description";
     div.className = 'tbox';
     div.draggable = true;
-    div.ondragstart=dragStart(event);
+    div.ondragstart=drag(event);
 
     document.body.appendChild(div);
 }
 
+//create div button
 
 document.getElementById("category").onclick = function() {taskcreation()};
 
 
-//drag and drop
+//drag and drop functions
 
 function allowDrop(ev) {
     ev.preventDefault();
-  }
+}
   
 function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 }
-
+  
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
