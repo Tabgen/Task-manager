@@ -37,7 +37,7 @@ document.getElementById("category").onclick = function() {taskcreation()};
 //drag and drop functions
 
 function allowDrop(ev) {
-    ev.preventDefault();
+   ev.preventDefault();
 }
   
 function drag(ev) {
