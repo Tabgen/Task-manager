@@ -17,17 +17,32 @@ function togglemenu() {
 }
 
 
+
+
+
 // create droppable div
 function taskcreation() {
-    var div = document.createElement('div');
+
+    var tasktittle = document.getElementById("tname");
+    var taskdescription = document.getElementById("tdescription");
+    
+
+    const div = document.createElement('div');
     div.id = 'drag1';
-    div.innerHTML = "task name" + " " + "task description";
     div.className = 'tbox';
-    div.draggable = true;
-    div.ondragstart=drag(event);
+    div.innerHTML = "test";
+    div.setAttribute("draggable", "true");
+    div.setAttribute("ondragstart","drag(event)");
+    
+
 
     document.body.appendChild(div);
+
 }
+
+document.getElementById("formsubmit").onclick = function() {taskcreation()};
+
+
 
 //create div button
 
@@ -99,5 +114,3 @@ function drop(ev) {
 
             //    newLink.click(); 
             //}
-
-

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Task manager</title>
 </head>
 <body>
     <!DOCTYPE html>
@@ -33,51 +33,47 @@
     </header>
     
     <main id="main">
-
+        
         <div class="actions">
             <button id="task">New task</button>
+
+                <!--create task form-->
                 
-                <div class="taskforum" id="taskforum">
-
-                    <form class="createtask">
-
+                <div class="taskforum" id="taskforum" action="index.html">
+                    <form class="createtask" >
                         <h2>Task name</h2>
-
                         <input type="text" id="tname" name="tname">
-
                         <h2>Task description</h2>
-
                         <textarea id="tdescription" name="tdescription" rows="8" cols="10"></textarea>
-
-                        <div>
-                            <input type="button" id="bt" value="Save data to file" onclick="saveFile()" />
-                        </div>
-
-                        <button id="cancel">cancel</button>
-
+                        <input type="submit" id="formsubmit" value="create"></button>
+                        <button class="cancel">cancel</button>
                     </form>
-
                 </div>
+
+                
+
 
             <button id="category">New category</button>
         </div>
 
         <div class="container" id="tasks" ondrop="drop(event)" ondragover="allowDrop(event)" >
             <h2>Tasks</h2>
-            <div>
-                <p id="result">
-            </div>
+            
+
         </div>
 
-        <div class="container" id="progress">
+        <div class="container" id="progress" ondrop="drop(event)" ondragover="allowDrop(event)">
             <h2>In progress</h2>
         </div>
 
-        <div class="container" id="complete">
+        <div class="container" id="complete" ondrop="drop(event)" ondragover="allowDrop(event)">
             <h2>completed</h3>
         </div>
 
+        <div class="overlay" id="overlay"></div>
+
     </main>
+
 
 
     <script src="app.js"></script>
