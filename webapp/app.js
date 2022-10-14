@@ -1,9 +1,43 @@
 document.getElementById("task").onclick = function() {newtask()};
 
+
+//task form
+
+const formbuttons = document.querySelectorAll("data-target-modal")
+const cancel = document.querySelectorAll(".cancel");
+const overlay = document.getElementById("overlay");
+
+
+
+
+formbuttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelector(btn.dataset.targetModal).classList.add("show");
+      overlay.classList.add("show");
+    });
+});
+  
+close_modals.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const modal = btn.closest(".taskform");
+      modal.classList.remove("show");
+      overlay.classList.remove("show");
+    });
+});
+  
+window.onclick = (event) => {
+    if (event.target == overlay) {
+        const modals = document.querySelectorAll(".taskform");
+        modals.forEach((modal) => modal.classList.remove("active"));
+        overlay.classList.remove("active");
+    }
+};
+  
 function newtask() {
     document.getElementById("taskforum").classList.toggle("show");
 }
 
+//Responsive nav
 var menuList = document.getElementById("menuList")
 
 menuList.style.maxHeight = "0px"
@@ -22,21 +56,25 @@ function togglemenu() {
 
 // create droppable div
 function taskcreation() {
+    const todo_div = document.createElement("div");
+    const input_val = document.getElementById("tname").value;
+    const txt = document.createTextNode(input_val);
+    
+    todo_div.appendChild(txt);
+    todo_div.classList.add("todo");
+    todo_div.setAttribute("draggable", "true");
 
-    var tasktittle = document.getElementById("tname");
-    var taskdescription = document.getElementById("tdescription");
+    
+    //const div = document.createElement('div');
+    //div.id = 'drag1';
+    //div.className = 'tbox';
+    //div.innerHTML = "test";
+    //div.setAttribute("draggable", "true");
+    //div.setAttribute("ondragstart","drag(event)");
     
 
-    const div = document.createElement('div');
-    div.id = 'drag1';
-    div.className = 'tbox';
-    div.innerHTML = "test";
-    div.setAttribute("draggable", "true");
-    div.setAttribute("ondragstart","drag(event)");
-    
 
-
-    document.body.appendChild(div);
+    //document.body.appendChild(div);
 
 }
 
