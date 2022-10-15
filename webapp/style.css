@@ -124,18 +124,18 @@ main {
     margin-right: auto;
 }
 
-form {
+.createtask {
     display: flex;
     flex-direction: column;
     padding: 50px;
 
 }
 
-form h2 {
+.createtask h2 {
     font-size: 1.2rem;
 }
 
-form input {
+.createtask input {
     padding: 5px;
     margin-top: 5px;
     margin-bottom: 10px;
@@ -177,7 +177,6 @@ form input {
 }
 
 #formsubmit {
-    color: black;
     font-size: 1.6rem;
 }
 

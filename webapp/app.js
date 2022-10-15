@@ -1,38 +1,7 @@
 document.getElementById("task").onclick = function() {newtask()};
 
 
-//task form
 
-const formbuttons = document.querySelectorAll("data-target-modal")
-const cancel = document.querySelectorAll(".cancel");
-const overlay = document.getElementById("overlay");
-
-
-
-
-formbuttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      document.querySelector(btn.dataset.targetModal).classList.add("show");
-      overlay.classList.add("show");
-    });
-});
-  
-close_modals.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const modal = btn.closest(".taskform");
-      modal.classList.remove("show");
-      overlay.classList.remove("show");
-    });
-});
-  
-window.onclick = (event) => {
-    if (event.target == overlay) {
-        const modals = document.querySelectorAll(".taskform");
-        modals.forEach((modal) => modal.classList.remove("active"));
-        overlay.classList.remove("active");
-    }
-};
-  
 function newtask() {
     document.getElementById("taskforum").classList.toggle("show");
 }
@@ -51,36 +20,50 @@ function togglemenu() {
 }
 
 
+//document.getElementById("formsubmit").onclick = function() {taskcreation()};
+document.getElementById("cancel").onclick = function() {hide()}
 
 
+//get input data
+function append_to_div(drag1, data){ 
+    document.getElementById(drag1).innerText += data; 
+}
+
+document.getElementById("fromsubmit") 
+        .addEventListener('click', function() { 
+    var e_input = document.getElementById("tname"); 
+    var value = e_input.value.trim(); 
+
+    if(!value){
+        alert("Input field can't be empty!"); 
+    } else {
+        append_to_div("drag1", value+"\n"); 
+    }
+    e_input.value = ""; 
+}); 
 
 // create droppable div
 function taskcreation() {
-    const todo_div = document.createElement("div");
-    const input_val = document.getElementById("tname").value;
-    const txt = document.createTextNode(input_val);
     
-    todo_div.appendChild(txt);
-    todo_div.classList.add("todo");
-    todo_div.setAttribute("draggable", "true");
+    const div = document.createElement('div');
 
-    
-    //const div = document.createElement('div');
-    //div.id = 'drag1';
-    //div.className = 'tbox';
+
+    div.id = 'drag1';
+    div.className = 'tbox';
     //div.innerHTML = "test";
-    //div.setAttribute("draggable", "true");
-    //div.setAttribute("ondragstart","drag(event)");
-    
+    div.setAttribute("draggable", "true");
+    div.setAttribute("ondragstart","drag(event)");
 
-
-    //document.body.appendChild(div);
+    document.body.appendChild(div);
+    document.getElementById("taskforum").classList.remove("show");
 
 }
 
-document.getElementById("formsubmit").onclick = function() {taskcreation()};
 
 
+function hide() {
+    document.getElementById("taskforum").classList.remove("show");
+}
 
 //create div button
 
