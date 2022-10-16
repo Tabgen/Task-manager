@@ -25,6 +25,7 @@ document.getElementById("cancel").onclick = function() {hide()}
 
 text = "taskbox"
 
+var taskbox = text + 1;
 
 //get input data
 function append_to_div(div, data){ 
@@ -35,7 +36,7 @@ document.getElementById("formsubmit")
         .addEventListener('click', function() { 
     var tname = document.getElementById("tname"); 
     var value = tname.value.trim(); 
-    var divid = text;
+    var divid = taskbox;
     
 
 
@@ -53,7 +54,7 @@ function taskcreation() {
     const div = document.createElement('div');
 
 
-    div.id = text;
+    div.id = taskbox;
     div.className = "tbox";
     div.setAttribute("draggable", "true");
     div.setAttribute("ondragstart","drag(event)");
