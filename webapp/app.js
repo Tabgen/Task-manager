@@ -20,26 +20,31 @@ function togglemenu() {
 }
 
 
-//document.getElementById("formsubmit").onclick = function() {taskcreation()};
+document.getElementById("formsubmit").onclick = function() {taskcreation()};
 document.getElementById("cancel").onclick = function() {hide()}
+
+text = "taskbox"
 
 
 //get input data
-function append_to_div(drag1, data){ 
-    document.getElementById(drag1).innerText += data; 
+function append_to_div(div, data){ 
+    document.getElementById(div).innerText += data; 
 }
 
-document.getElementById("fromsubmit") 
+document.getElementById("formsubmit") 
         .addEventListener('click', function() { 
-    var e_input = document.getElementById("tname"); 
-    var value = e_input.value.trim(); 
+    var tname = document.getElementById("tname"); 
+    var value = tname.value.trim(); 
+    var divid = text;
+    
+
 
     if(!value){
         alert("Input field can't be empty!"); 
     } else {
-        append_to_div("drag1", value+"\n"); 
+        append_to_div(divid, value+"\n"); 
     }
-    e_input.value = ""; 
+    tname.value = ""; 
 }); 
 
 // create droppable div
@@ -48,9 +53,8 @@ function taskcreation() {
     const div = document.createElement('div');
 
 
-    div.id = 'drag1';
-    div.className = 'tbox';
-    //div.innerHTML = "test";
+    div.id = text;
+    div.className = "tbox";
     div.setAttribute("draggable", "true");
     div.setAttribute("ondragstart","drag(event)");
 
@@ -65,9 +69,6 @@ function hide() {
     document.getElementById("taskforum").classList.remove("show");
 }
 
-//create div button
-
-document.getElementById("category").onclick = function() {taskcreation()};
 
 
 //drag and drop functions
