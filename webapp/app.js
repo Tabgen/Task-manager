@@ -28,37 +28,37 @@ text = "taskbox"
 var taskbox = text + 1;
 
 //get input data
-function append_to_div(div, data){ 
-    document.getElementById(div).innerText += data; 
-}
+//function append_to_div(div, data){ 
+//    document.getElementById(div).innerText += data; 
+//}
 
-document.getElementById("formsubmit") 
-        .addEventListener('click', function() { 
-    var tname = document.getElementById("tname"); 
-    var value = tname.value.trim(); 
-    var divid = taskbox;
+//document.getElementById("formsubmit") 
+//        .addEventListener('click', function() { 
+//    var tname = document.getElementById("tname"); 
+//    var value = tname.value.trim(); 
+//    var divid = taskbox;
     
 
 
-    if(!value){
-        alert("Input field can't be empty!"); 
-    } else {
-        append_to_div(divid, value+"\n"); 
-    }
-    tname.value = ""; 
-}); 
+//    if(!value){
+//       alert("Input field can't be empty!"); 
+//  } else {
+//        append_to_div(divid, value+"\n"); 
+//    }
+//    tname.value = ""; 
+//}); 
 
 // create droppable div
 function taskcreation() {
     
     const div = document.createElement('div');
 
-
+    var value = tname.value.trim(); 
     div.id = taskbox;
     div.className = "tbox";
     div.setAttribute("draggable", "true");
     div.setAttribute("ondragstart","drag(event)");
-
+    div.append(value);
     document.body.appendChild(div);
     document.getElementById("taskforum").classList.remove("show");
 
