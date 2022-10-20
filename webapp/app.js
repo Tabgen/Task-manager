@@ -1,7 +1,6 @@
 document.getElementById("task").onclick = function() {newtask()};
 
 
-
 function newtask() {
     document.getElementById("taskforum").classList.toggle("show");
 }
@@ -23,9 +22,8 @@ function togglemenu() {
 document.getElementById("formsubmit").onclick = function() {taskcreation()};
 document.getElementById("cancel").onclick = function() {hide()}
 
-text = "taskbox"
 
-var taskbox = text + 1;
+
 
 //get input data
 //function append_to_div(div, data){ 
@@ -49,21 +47,27 @@ var taskbox = text + 1;
 //}); 
 
 // create droppable div
+
+
+
 function taskcreation() {
     
     const div = document.createElement('div');
+    var text = "test";
 
+
+    text = text + 1; 
     var value = tname.value.trim(); 
-    div.id = taskbox;
+    div.id = text;
     div.className = "tbox";
     div.setAttribute("draggable", "true");
     div.setAttribute("ondragstart","drag(event)");
     div.append(value);
     document.body.appendChild(div);
     document.getElementById("taskforum").classList.remove("show");
-
+    text = text + 1; 
 }
-
+    text = text;
 
 
 function hide() {
