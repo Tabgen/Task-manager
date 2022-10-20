@@ -48,26 +48,26 @@ document.getElementById("cancel").onclick = function() {hide()}
 
 // create droppable div
 
+var taskid = 0;
 
 
 function taskcreation() {
     
     const div = document.createElement('div');
-    var text = "test";
+    
+    taskid += 1;
 
-
-    text = text + 1; 
     var value = tname.value.trim(); 
-    div.id = text;
+    div.id = taskid;
     div.className = "tbox";
     div.setAttribute("draggable", "true");
     div.setAttribute("ondragstart","drag(event)");
     div.append(value);
     document.body.appendChild(div);
     document.getElementById("taskforum").classList.remove("show");
-    text = text + 1; 
+
 }
-    text = text;
+
 
 
 function hide() {
