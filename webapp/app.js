@@ -53,19 +53,25 @@ var taskid = 0;
 
 function taskcreation() {
     
-    const div = document.createElement('div');
-    
+    const div = document.createElement("div");
+    var a = document.createElement("a");
     taskid += 1;
+    
+    const category = document.createElement("div");
 
+    category.className = "category-box";
+    category.innerHTML = "Cloud";
     var value = tname.value.trim(); 
     div.id = taskid;
     div.className = "tbox";
     div.setAttribute("draggable", "true");
     div.setAttribute("ondragstart","drag(event)");
     div.append(value);
-    document.body.appendChild(div);
+    div.append(category);
+    a.appendChild(div);
+    document.body.appendChild(a);
     document.getElementById("taskforum").classList.remove("show");
-
+    tname.value = "";
 }
 
 
