@@ -3,6 +3,7 @@ document.getElementById("task").onclick = function() {newtask()};
 
 function newtask() {
     document.getElementById("taskforum").classList.toggle("show");
+    document.getElementById("overlay").classList.toggle("show");
 }
 
 //Responsive nav
@@ -61,7 +62,8 @@ function taskcreation() {
 
     category.className = "category-box";
     category.innerHTML = "Cloud";
-    var value = tname.value.trim(); 
+    var value = tname.value.trim();
+    
     div.id = taskid;
     div.className = "tbox";
     div.setAttribute("draggable", "true");
@@ -116,34 +118,34 @@ function drop(ev) {
 
 // lokal fil lagring 
 
-            //let saveFile = () => {
-            //    	
-                // Get the data from each element on the form.
-            //    const tname = document.getElementById('tname');
-            //    const tdescription = document.getElementById('tdescription');
+//let saveFile = () => {
+//    	
+    // Get the data from each element on the form.
+//    const tname = document.getElementById('tname');
+//    const tdescription = document.getElementById('tdescription');
 
-                
-                // This variable stores all the data.
-            //    let data = 
-            //        '\r tname: ' + tname.value + ' \r\n ' + 
-            //        'tdescription: ' + tdescription.value;
+    
+    // This variable stores all the data.
+//    let data = 
+//        '\r tname: ' + tname.value + ' \r\n ' + 
+//        'tdescription: ' + tdescription.value;
 
-                
-                // Convert the text to BLOB.
-            //    const textToBLOB = new Blob([data], { type: 'text/plain' });
-            //    const sFileName = 'formData.txt';	   // The file to save the data.
+    
+    // Convert the text to BLOB.
+//    const textToBLOB = new Blob([data], { type: 'text/plain' });
+//    const sFileName = 'formData.txt';	   // The file to save the data.
 
-            //    let newLink = document.createElement("a");
-            //    newLink.download = sFileName;
+//    let newLink = document.createElement("a");
+//    newLink.download = sFileName;
 
-            //    if (window.webkitURL != null) {
-            //        newLink.href = window.webkitURL.createObjectURL(textToBLOB);
-            //    }
-            //    else {
-            //        newLink.href = window.URL.createObjectURL(textToBLOB);
-            //        newLink.style.display = "none";
-            //        document.body.appendChild(newLink);
-            //    }
+//    if (window.webkitURL != null) {
+//        newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+//    }
+//    else {
+//        newLink.href = window.URL.createObjectURL(textToBLOB);
+//        newLink.style.display = "none";
+//        document.body.appendChild(newLink);
+//    }
 
-            //    newLink.click(); 
-            //}
+//    newLink.click(); 
+//}
