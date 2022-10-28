@@ -61,8 +61,10 @@ function taskcreation() {
     const category = document.createElement("div");
 
     category.className = "category-box";
-    category.innerHTML = "Cloud";
     var value = tname.value.trim();
+    var categoryname = tcategory.value.trim();
+    category.append(categoryname);
+
     
     div.id = taskid;
     div.className = "tbox";
@@ -71,9 +73,10 @@ function taskcreation() {
     div.append(value);
     div.append(category);
     a.appendChild(div);
-    document.body.appendChild(a);
+    document.getElementById("tasks").appendChild(a);
     document.getElementById("taskforum").classList.remove("show");
     tname.value = "";
+    tcategory.value = "";
 }
 
 

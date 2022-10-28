@@ -41,12 +41,21 @@
                 
                 <div class="taskforum" id="taskforum" name="test" action="index.html">
                     <div class="createtask">
-                        <h2>Task name</h2>
-                        <input type="text" data-target-modal="taskname" id="tname">
-                        <h2>Task description</h2>
+                        <div class="alignment">
+                            <div class="tinputbox">
+                                <h2>Task name</h2>
+                                <input type="text" data-target-modal="taskname" id="tname">
+                            </div>
+                            <div class="tinputbox">
+                                <h2>category</h2>
+                                <input type="text" data-target-modal="taskname" id="tcategory" value="category"></div>
+                            </div>
+                            <h2>Task description</h2>
                         <textarea id="tdescription" data-target-modal="taskname" name="tdescription" rows="8" cols="10"></textarea>
-                        <button id="formsubmit" value="create" onclick="taskcreation">create</button>
-                        <button id="cancel" class="cancel">cancel</button>
+                        <div class="tcreatecancel">
+                            <button id="formsubmit" class="cancel" value="create" onclick="taskcreation">create</button>
+                            <button id="cancel" class="cancel">cancel</button>
+                        </div>
                     </div>
                 </div>
                 <div class="overlay" id="overlay"></div>
@@ -54,7 +63,7 @@
                 
 
 
-            <button id="category">New category</button>
+            <button id="category">test</button>
         </div>
 
         <div class="container" id="tasks" ondrop="drop(event)" ondragover="allowDrop(event)" >
