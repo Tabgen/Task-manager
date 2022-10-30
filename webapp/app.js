@@ -65,7 +65,7 @@ function taskcreation() {
     var categoryname = tcategory.value.trim();
     category.append(categoryname);
 
-    
+
     div.id = taskid;
     div.className = "tbox";
     div.setAttribute("draggable", "true");
