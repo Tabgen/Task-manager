@@ -20,71 +20,16 @@ function togglemenu() {
 }
 
 
-document.getElementById("formsubmit").onclick = function() {taskcreation()};
+
 document.getElementById("cancel").onclick = function() {hide()}
-
-
-
-
-//get input data
-//function append_to_div(div, data){ 
-//    document.getElementById(div).innerText += data; 
-//}
-
-//document.getElementById("formsubmit") 
-//        .addEventListener('click', function() { 
-//    var tname = document.getElementById("tname"); 
-//    var value = tname.value.trim(); 
-//    var divid = taskbox;
-    
-
-
-//    if(!value){
-//       alert("Input field can't be empty!"); 
-//  } else {
-//        append_to_div(divid, value+"\n"); 
-//    }
-//    tname.value = ""; 
-//}); 
-
-// create droppable div
-
-var taskid = 0;
-
-
-function taskcreation() {
-    
-    const div = document.createElement("div");
-    var a = document.createElement("a");
-    taskid += 1;
-    
-    const category = document.createElement("div");
-
-    category.className = "category-box";
-    var value = tname.value.trim();
-    var categoryname = tcategory.value.trim();
-    category.append(categoryname);
-
-
-    div.id = taskid;
-    div.className = "tbox";
-    div.setAttribute("draggable", "true");
-    div.setAttribute("ondragstart","drag(event)");
-    div.append(value);
-    div.append(category);
-    a.appendChild(div);
-    document.getElementById("tasks").appendChild(a);
-    document.getElementById("taskforum").classList.remove("show");
-    tname.value = "";
-    tcategory.value = "";
-}
-
 
 
 function hide() {
     document.getElementById("taskforum").classList.remove("show");
+    tname.value = "";
+    tcategory.value = "";
+    tdescription.value = "";
 }
-
 
 
 //drag and drop functions
@@ -103,52 +48,3 @@ function drop(ev) {
     ev.target.appendChild(document.getElementById(data));
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// lokal fil lagring 
-
-//let saveFile = () => {
-//    	
-    // Get the data from each element on the form.
-//    const tname = document.getElementById('tname');
-//    const tdescription = document.getElementById('tdescription');
-
-    
-    // This variable stores all the data.
-//    let data = 
-//        '\r tname: ' + tname.value + ' \r\n ' + 
-//        'tdescription: ' + tdescription.value;
-
-    
-    // Convert the text to BLOB.
-//    const textToBLOB = new Blob([data], { type: 'text/plain' });
-//    const sFileName = 'formData.txt';	   // The file to save the data.
-
-//    let newLink = document.createElement("a");
-//    newLink.download = sFileName;
-
-//    if (window.webkitURL != null) {
-//        newLink.href = window.webkitURL.createObjectURL(textToBLOB);
-//    }
-//    else {
-//        newLink.href = window.URL.createObjectURL(textToBLOB);
-//        newLink.style.display = "none";
-//        document.body.appendChild(newLink);
-//    }
-
-//    newLink.click(); 
-//}
