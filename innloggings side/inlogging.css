@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.inlogging-section {
+    background-color: #201f4e;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.inlogging-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    width: 500px;
+    height: 430px;
+    border-radius: 10px;
+}
+
+.inlogging-form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 50px;
+}
+
+.inlogging-form h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    margin: 5px;
+    margin-top: 20px;
+}
+
+.inlogging-form input {
+    margin: 5px;
+    width: 450px;
+    height: 60px;
+    border-radius: 6px;
+    box-shadow: 0;
+    border: 1px solid #0000001c;
+    font-size: 1.3rem;
+}
+
+.inlogging-form button {
+    height: 50px;
+    background-color: white;
+    border: none;
+    font-size: 1.5rem;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 6px;
+    width: 455px;
+}
+
+#login {
+    background-color: rgb(61, 166, 252);
+    color: white;
+    margin-top: 55px;
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+
+.signup-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: rgb(255, 255, 255);
+    width: 500px;
+    height: 475px;
+    border-radius: 10px;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 50px;
+}
+
+.signup-form h2 {
+    font-size: 3rem;
+    margin: 5px;
+}
+
+.signup-form input {
+    margin: 5px;
+    width: 450px;
+    height: 60px;
+    border-radius: 6px;
+    box-shadow: 0;
+    border: 1px solid #0000001c;
+    font-size: 1.3rem;
+    margin-top: 5px;
+}
+
+.signup-form button {
+    height: 50px;
+    background-color: white;
+    border: none;
+    font-size: 1.5rem;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 6px;
+    width: 4s55px;
+    margin-top: 50px;
+}
+
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+#create-account {
+    background-color: rgb(61, 166, 252);
+    color: white;
+}
+
+#username {
+    margin-top: 30px;
+}
+
+#new-username {
+    margin-top: 20px;
+}
+
