@@ -63,13 +63,13 @@ function taskcreation() {
 
     //writes to database
 
-    //addDoc(
-    //    collection(db, "users", "user", "save"), {
-    //
-    //        task: value,
-    //        category: categoryname,
-    //        description: descriptionname
+    addDoc(
+        collection(db, "users", "user", "save"), {
+    
+            task: value,
+            category: categoryname,
+            description: descriptionname
         
-    //});
+    });
 
 }
