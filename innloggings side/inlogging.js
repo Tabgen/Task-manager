@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { getFirestore, addDoc, setDoc, doc, collection } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
+import { getFirestore, addDoc, setDoc, doc, getDoc, collection } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -18,31 +18,59 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
 
-document.getElementById("create-account").onclick = function() {createaccounts()};
 
+document.getElementById("create-account").onclick = function() {validate()};
+
+function validate () {
+    if (newpassword.value === renewpassword.value) {
+        createaccounts();
+    } else {
+        alert("password does not match");
+    }
+}
+
+var loginname = username.value;
 
 function createaccounts() {
     
-    
-
     var email = newemail.value.trim();
     var username = newusername.value.trim();
     var password = renewpassword.value.trim();
 
-
     //writes to database
 
-    addDoc(
-        collection(db, "users",), {
+    setDoc(
+        doc(db, "users", username), {
             email: email,
             username: username,
             password: password,
     });
 
+    newemail.value = "";
+    newusername.value = "";
+    newpassword.value = "";
+    renewpassword.value = "";
 }
 
 
 
+function loginrequest() {
+
+    const docSnap = getDoc(
+        doc(db, "users", loginname)
+    );
+
+    const loginpassword = docSnap.data().password;
+
+    if (loginpassword === password) {
+        alert("Please enter a password");
+    } else {
+        alert("password or username is incorrect");
+        console.log(docSnap.password);
+    }
+}
+
+document.getElementById("login").onclick = function() {loginrequest()};
 
 
 
