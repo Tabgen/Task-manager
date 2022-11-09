@@ -52,25 +52,20 @@ function createaccounts() {
     renewpassword.value = "";
 }
 
+document.getElementById("login").onclick = function() {loginrequest()};
+
+const docSnap = await getDoc(doc(db, "users", loginname));
 
 
 function loginrequest() {
-
-    const docSnap = getDoc(
-        doc(db, "users", loginname)
-    );
-
-    const loginpassword = docSnap.data().password;
-
-    if (loginpassword === password) {
-        alert("Please enter a password");
+    if (password.value === docSnap.data().password) {
+        window.location.href = "/webapp/index.html";
     } else {
         alert("password or username is incorrect");
-        console.log(docSnap.password);
     }
 }
 
-document.getElementById("login").onclick = function() {loginrequest()};
+
 
 
 
