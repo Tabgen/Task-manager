@@ -52,9 +52,10 @@ function createaccounts() {
     renewpassword.value = "";
 }
 
+const docSnap = await getDoc(doc(db, "users", loginname));
+
 document.getElementById("login").onclick = function() {loginrequest()};
 
-const docSnap = await getDoc(doc(db, "users", loginname));
 
 
 function loginrequest() {
