@@ -61,10 +61,10 @@ main {
 .container {
     display:flex;
     text-align: left;
-    height: 750px;
+    height: 900px;
     width: 400px;
     flex-direction: column;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0.178);
     border-radius: 5px;
     
 }
@@ -198,7 +198,7 @@ main {
 }
 
 body {
-    background-color: rgba(211, 211, 211, 0.342);
+    background-image: url("/assets/abstract.jpg");
 }
 
 .category-box {
