@@ -16,18 +16,18 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <script type="module" src="database.js"></script>
-
 
     <header>
         <div class="navbar">
             <h1 class="logo">Tasks</h1>
             <nav>
                 <ul id="menuList">
-                    <li><a href="">Home</a></li>
-                    <li><a href="">New</a></li>
+                    <li><a href="">dashboard</a></li>
+                    <li><a href="">Projects</a></li>
                     <li><a href="">Log out</a></li>
                 </ul>
             </nav>
@@ -35,42 +35,37 @@
         </div>
     </header>
 
-    <main id="main">
-        
-        <div class="actions">
-            <button id="task">New task</button>
-
-                <!--create task form-->
-                
-                <div class="taskforum" id="taskforum" name="test" action="index.html">
-                    <div class="createtask">
-                        <div class="alignment">
-                            <div class="tinputbox">
-                                <h2>Task name</h2>
-                                <input type="text" data-target-modal="taskname" id="tname">
+            <div class="actions">
+                    <!--create task form-->
+                    <div class="taskforum" id="taskforum" name="test" action="index.html">
+                        <div class="createtask">
+                            <div class="alignment">
+                                <div class="tinputbox">
+                                    <h2>Task name</h2>
+                                    <input type="text" data-target-modal="taskname" id="tname">
+                                </div>
+                                <div class="tinputbox">
+                                    <h2>category</h2>
+                                    <input type="text" data-target-modal="taskname" id="tcategory"></div>
+                                </div>
+                                <h2>Task description</h2>
+                            <textarea id="tdescription" data-target-modal="taskname" name="tdescription" rows="8" cols="10"></textarea>
+                            <div class="tcreatecancel">
+                                <button id="formsubmit" class="cancel" value="create" onclick="taskcreation">create</button>
+                                <button id="cancel" class="cancel">cancel</button>
                             </div>
-                            <div class="tinputbox">
-                                <h2>category</h2>
-                                <input type="text" data-target-modal="taskname" id="tcategory"></div>
-                            </div>
-                            <h2>Task description</h2>
-                        <textarea id="tdescription" data-target-modal="taskname" name="tdescription" rows="8" cols="10"></textarea>
-                        <div class="tcreatecancel">
-                            <button id="formsubmit" class="cancel" value="create" onclick="taskcreation">create</button>
-                            <button id="cancel" class="cancel">cancel</button>
                         </div>
                     </div>
-                </div>
-                <div class="overlay" id="overlay"></div>
+                    <div class="overlay" id="overlay"></div>
+            </div>
 
-                
+    <main id="main">
+        
 
-
-            <button id="category">test</button>
-        </div>
-
-        <div class="container" id="tasks" ondrop="drop(event)" ondragover="allowDrop(event)" >
-            <h2>Tasks</h2>
+        <div class="container" id="tasks" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="upper-container">
+                <h2>Tasks</h2> <button id="task">+</button>
+            </div>
         </div>
 
         <div class="container" id="progress" ondrop="drop(event)" ondragover="allowDrop(event)">

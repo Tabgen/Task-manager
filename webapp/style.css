@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    
 }
 
 .navbar {
@@ -9,8 +10,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 50px;
-    background-color: rgb(32, 31, 78);
-
+    background-color: rgba(32, 31, 78, 0);
 }
 
 .logo {
@@ -44,11 +44,12 @@ nav ul li a {
     color: rgb(255, 255, 255);
     font-size: 1.4rem;
     padding: 5px;
+    
 
 }
 
 nav ul li a:hover {
-    color: rgb(255, 230, 0);
+    color: rgb(26, 0, 48);
 }
 
 main {
@@ -64,9 +65,27 @@ main {
     height: 900px;
     width: 400px;
     flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.178);
-    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.863);
+    border-radius: 40px;
+    padding: 20px;
     
+}
+
+.upper-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.upper-container button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    padding: none;
+    cursor: pointer;
+    padding-bottom: 5px;
+    padding-top: 0px;
+    padding-right: 5px;
+    margin-bottom: 10px;
 }
 
 .container h2 {
@@ -76,17 +95,7 @@ main {
     margin-bottom: 10px;
 }
 
-#tasks h2 {
-    border-bottom: 6px solid red;
-}
 
-#progress h2 {
-    border-bottom: 6px solid orange;
-}
-
-#complete h2 {
-    border-bottom: 6px solid rgb(58, 214, 58);
-}
 
 .actions {
     flex-direction: column;
@@ -178,16 +187,15 @@ main {
 
 
 .tbox {
-    border: 1px solid rgb(0, 0, 0);
     font-size: 1.5rem;
-    width: 375px;
+    max-width: 370px;
     display: flex;
-    margin: 0px;
+
     margin-bottom: 10px;
     height: 100px;
-    border-radius: 3px;
+    border-radius: 15px;
     padding: 10px;
-    background-color: white;
+    background-color: #DAD8FF;
     flex-direction: column;
     justify-content: space-between;
     padding-left: 15px;
@@ -198,7 +206,10 @@ main {
 }
 
 body {
-    background-image: url("/assets/abstract.jpg");
+    background-image: url("/assets/SVG/Asset\ 1.svg");
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
 }
 
 .category-box {
