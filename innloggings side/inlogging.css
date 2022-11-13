@@ -4,7 +4,8 @@
 }
 
 .inlogging-section {
-    background-color: #201f4e;
+    background-image: url("/assets/SVG/Asset\ 1.svg");
+    background-size: cover;
     width: 100vw;
     height: 100vh;
     display: flex;
