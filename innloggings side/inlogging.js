@@ -29,7 +29,7 @@ function validate () {
     }
 }
 
-var loginname = username.value;
+loginname = username.value;
 
 function createaccounts() {
     
