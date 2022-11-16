@@ -29,7 +29,22 @@ function validate () {
     }
 }
 
-loginname = username.value;
+let loginname = " " + username.value;
+let docSnap = await getDoc(doc(db, "users", loginname));
+
+if (loginname === " " + username.value) {
+    setTimeout(() => {
+        loginname = "";
+        loginname = username.value;
+        console.log("updated");
+        console.log(username.value)
+        
+      }, "3000")
+    setTimeout(() => {
+      docSnap = getDoc(doc(db, "users", loginname))
+      }, "4000")
+
+}
 
 function createaccounts() {
     
@@ -52,7 +67,12 @@ function createaccounts() {
     renewpassword.value = "";
 }
 
-const docSnap = await getDoc(doc(db, "users", loginname));
+
+
+
+
+
+
 
 document.getElementById("login").onclick = function() {loginrequest()};
 
@@ -87,4 +107,3 @@ function createaccount () {
     document.getElementById("inlogging-container").classList.toggle("hide");
     document.getElementById("signup").classList.remove("hide");
 }
-
