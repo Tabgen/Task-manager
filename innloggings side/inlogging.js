@@ -3,6 +3,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getFirestore, addDoc, setDoc, doc, getDoc, collection } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
+import { getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-auth.js";
+import {getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,40 +19,42 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
+const auth = getAuth();
+const database = getDatabase(app);
 
 
-document.getElementById("create-account").onclick = function() {validate()};
 
-function validate () {
-    if (newpassword.value === renewpassword.value) {
-        createaccounts();
-    } else {
-        alert("password does not match");
-    }
-}
 
-let loginname = " " + username.value;
-let docSnap = await getDoc(doc(db, "users", loginname));
+create-account.addEventListener("click", (e) => {
 
-if (loginname === " " + username.value) {
-    setTimeout(() => {
-        loginname = "";
-        loginname = username.value;
-        console.log("updated");
-        console.log(username.value)
-        
-      }, "3000")
-    setTimeout(() => {
-      docSnap = getDoc(doc(db, "users", loginname))
-      }, "4000")
+    var email = document.getElementById("newemail").value;
+    var password = document.getElementById("renewpassword").value;
 
-}
+
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert("password does not match");
+            // ..
+        });
+})
+
+
+
+
+
 
 function createaccounts() {
     
-    var email = newemail.value.trim();
+
     var username = newusername.value.trim();
-    var password = renewpassword.value.trim();
+
 
     //writes to database
 
@@ -74,8 +78,16 @@ function createaccounts() {
 
 
 
-document.getElementById("login").onclick = function() {loginrequest()};
 
+
+
+
+let loginname = " " + username.value;
+let docSnap = await getDoc(doc(db, "users", loginname));
+
+
+
+document.getElementById("login").onclick = function() {loginrequest()};
 
 
 function loginrequest() {
