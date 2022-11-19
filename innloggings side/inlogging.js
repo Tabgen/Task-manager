@@ -4,7 +4,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getFirestore, addDoc, setDoc, doc, getDoc, collection } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
 import { getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-auth.js";
-import {getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+import {getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js";
+//let ref = task-database.database("https://task-database-4177d-default-rtdb.europe-west1.firebasedatabase.app");
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -25,51 +26,92 @@ const database = getDatabase(app);
 
 
 
-create-account.addEventListener("click", (e) => {
 
-    var email = document.getElementById("newemail").value;
-    var password = document.getElementById("renewpassword").value;
+document.getElementById("createaccount").onclick = function() {createaccounts()};
+document.getElementById("login").onclick = function() {loginaccount()};
 
+function createaccounts() {
+    var email = document.getElementById('newemail').value;
+    var password = document.getElementById('renewpassword').value;
 
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // Signed in 
+            // Signed in
             const user = userCredential.user;
-            // ...
+            // ... user.uid
+          // save data into real time database
+           set(ref(database, 'users/' + user.uid), {
+                email: email,
+                password: password
+            })
+                .then(() => {
+                    // Data saved successfully!
+                    alert('user created successfully');
+    
+                })
+                .catch((error) => {
+                    // The write failed...
+                    alert(error);
+                });
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            alert("password does not match");
             // ..
+            alert(errorMessage);
         });
-})
-
-
-
-
-
-
-function createaccounts() {
-    
-
-    var username = newusername.value.trim();
-
-
-    //writes to database
-
-    setDoc(
-        doc(db, "users", username), {
-            email: email,
-            username: username,
-            password: password,
-    });
-
-    newemail.value = "";
-    newusername.value = "";
-    newpassword.value = "";
-    renewpassword.value = "";
 }
+
+function loginaccount() {
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // ...
+
+        // save log in details into real time database
+        var lgDate = new Date();
+        update(ref(database, 'users/' + user.uid), {
+            last_login: lgDate,
+        })
+            .then(() => {
+                // Data saved successfully!
+                alert('user logged in successfully');
+
+            })
+            .catch((error) => {
+                // The write failed...
+                alert(error);
+            });
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+    });
+}
+
+
+//function createaccounts() {
+//    
+//
+//    var username = newusername.value.trim();
+//
+//
+//    //writes to database
+//
+//    setDoc(
+//        doc(db, "users", username), {
+//            email: email,
+//            username: username,
+//            password: password,
+//    });
+//
+//    newemail.value = "";
+//    newusername.value = "";
+//    newpassword.value = "";
+//    renewpassword.value = "";
+//}
 
 
 
@@ -83,20 +125,20 @@ function createaccounts() {
 
 
 let loginname = " " + username.value;
-let docSnap = await getDoc(doc(db, "users", loginname));
+//let docSnap = await getDoc(doc(db, "users", loginname));
 
 
 
-document.getElementById("login").onclick = function() {loginrequest()};
+//document.getElementById("login").onclick = function() {loginrequest()};
 
 
-function loginrequest() {
-    if (password.value === docSnap.data().password) {
-        window.location.href = "/webapp/index.html";
-    } else {
-        alert("password or username is incorrect");
-    }
-}
+//function loginrequest() {
+//    if (password.value === docSnap.data().password) {
+//        window.location.href = "/webapp/index.html";
+//    } else {
+//        alert("password or username is incorrect");
+//    }
+//}
 
 
 
