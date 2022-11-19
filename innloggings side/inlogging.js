@@ -63,20 +63,26 @@ function createaccounts() {
 }
 
 function loginaccount() {
+    var email = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        window.location.href = "/webapp/index.html";
         // ...
 
         // save log in details into real time database
         var lgDate = new Date();
         update(ref(database, 'users/' + user.uid), {
             last_login: lgDate,
+            
         })
             .then(() => {
                 // Data saved successfully!
                 alert('user logged in successfully');
+                
 
             })
             .catch((error) => {
