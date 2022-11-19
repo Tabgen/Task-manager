@@ -5,7 +5,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase
 import { getFirestore, addDoc, setDoc, doc, getDoc, collection } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
 import { getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-auth.js";
 import {getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js";
-//let ref = task-database.database("https://task-database-4177d-default-rtdb.europe-west1.firebasedatabase.app");
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
