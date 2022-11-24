@@ -1,5 +1,6 @@
 document.getElementById("task").onclick = function() {newtask(), on()};
 
+document.getElementById("cancel").onclick = function() {hide(), off()}
 
 function newtask() {
     document.getElementById("taskforum").classList.toggle("show");
@@ -20,7 +21,6 @@ function togglemenu() {
 
 
 
-document.getElementById("cancel").onclick = function() {hide(), off()}
 
 
 function hide() {

@@ -24,3 +24,24 @@ const database = getDatabase(app);
 
 let userid = sessionStorage.getItem("userid");
 console.log(userid);
+
+
+
+
+
+document.getElementById("new-project").onclick = function() {newtask(), on()};
+
+//document.getElementById("cancel").onclick = function() {hide(), off()}
+
+function newtask() {
+    document.getElementById("modal").classList.toggle("show");
+}
+
+
+function on() {
+    document.getElementById("overlay").style.display = "block";
+}
+  
+  function off() {
+    document.getElementById("overlay").style.display = "none";
+}

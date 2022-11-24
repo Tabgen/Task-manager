@@ -15,10 +15,20 @@
             </div>
             <div class="navbuttons">
                 <a href="#Dashboard">Dashboard</a>
-                <a href="#NewProject">New project</a>
+                <button id="new-project">New project</button>
             </div>
         </nav>
     </header>
+    <div id="overlay"></div>
+    <div class="modal" id="modal">
+        <div class="create-project">
+            <input type="text" class="newproject" id="NewProject" placeholder="Project name">
+            <div class="tcreatecancel">
+                <button id="create" class="cancel">create</button>
+                <button id="cancel" class="cancel">cancel</button>
+            </div>
+        </div>
+    </div>
 
     <section class="section1">
         <div class="saves-container">
