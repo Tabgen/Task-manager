@@ -56,11 +56,13 @@ nav {
 }
 
 .saves-container {
+    display: flex;
     background-color: #ffffff;
     width: 1100px;
     height: 90%;
     border-radius: 48px;
-
+    align-items: center;
+    flex-direction: column;
 }
 
 .modal {
@@ -77,7 +79,6 @@ nav {
     display: none;
     background-color: #fff;
     z-index: 11;
-    
 }
 
 .show {
@@ -130,4 +131,21 @@ nav {
     border-radius: 40px;
     border: 2px solid #ccc;
     padding-left: 13px;
+}
+
+.task-box {
+    margin-top: 15px;
+    text-decoration: none;
+    display: flex;
+    background-color: #DAD8FF;
+    color: rgb(0, 0, 0);
+    width: 1030px;
+    height: 50px;
+    font-size: 2rem;
+    border-radius: 13px;
+    padding-left: 20px;
+}
+
+#prosjekt1 {
+    margin-top: 35px;
 }

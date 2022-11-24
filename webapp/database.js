@@ -23,7 +23,7 @@ const db = getFirestore();
 document.getElementById("formsubmit").onclick = function() {taskcreation()};
 
 
-var taskid = 0;
+let taskid = 0;
 
 
 function taskcreation() {
