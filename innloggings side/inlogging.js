@@ -22,6 +22,7 @@ const db = getFirestore();
 const auth = getAuth();
 const database = getDatabase(app);
 
+let userid = "";
 
 
 
@@ -39,13 +40,21 @@ function createaccounts() {
             const user = userCredential.user;
             // ... user.uid
           // save data into real time database
-           set(ref(database, 'users/' + user.uid), {
+            set(ref(database, 'users/' + user.uid), {
+                email: email,
+                password: password
+            })
+
+            setDoc(doc(db, 'users/' + user.uid), {
                 email: email,
                 password: password
             })
                 .then(() => {
                     // Data saved successfully!
                     alert('user created successfully');
+                    userid = user.uid;
+                    sessionStorage.setItem("userid", userid);
+                    window.location.href = "/lagringside/index.html";
     
                 })
                 .catch((error) => {
@@ -69,7 +78,9 @@ function loginaccount() {
     .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        window.location.href = "/webapp/index.html";
+        userid = user.uid;
+        sessionStorage.setItem("userid", userid);
+        window.location.href = "/lagringside/index.html";
         // ...
 
         // save log in details into real time database

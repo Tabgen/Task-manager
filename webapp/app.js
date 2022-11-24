@@ -1,9 +1,8 @@
-document.getElementById("task").onclick = function() {newtask()};
+document.getElementById("task").onclick = function() {newtask(), on()};
 
 
 function newtask() {
     document.getElementById("taskforum").classList.toggle("show");
-    document.getElementById("overlay").classList.toggle("show");
 }
 
 //Responsive nav
@@ -21,7 +20,7 @@ function togglemenu() {
 
 
 
-document.getElementById("cancel").onclick = function() {hide()}
+document.getElementById("cancel").onclick = function() {hide(), off()}
 
 
 function hide() {
@@ -48,3 +47,10 @@ function drop(ev) {
     ev.target.appendChild(document.getElementById(data));
 }
 
+function on() {
+    document.getElementById("overlay").style.display = "block";
+}
+  
+  function off() {
+    document.getElementById("overlay").style.display = "none";
+}
