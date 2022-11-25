@@ -47,8 +47,8 @@ querySnapshot.forEach((doc) => {
   a1.className = "task-box";
 
  
-  let projectname = doc.id;
-  div1.append(projectname);
+  
+  
   a1.id = taskid;
   div1.className = "tbox";
   a1.append(div1);
@@ -56,6 +56,7 @@ querySnapshot.forEach((doc) => {
   console.log(doc.id, " => ", doc.data());
   sessionStorage.setItem("projectname", projectname);
   sessionStorage.setItem("userid", userid);
+  div1.append(projectname);
 })
 
 

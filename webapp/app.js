@@ -24,6 +24,7 @@ function togglemenu() {
 
 
 function hide() {
+    document.getElementById("overlay").style.display = "none";
     document.getElementById("taskforum").classList.remove("show");
     tname.value = "";
     tcategory.value = "";
