@@ -133,41 +133,8 @@ function loginaccount() {
 
 
 
-
-
-
-
-
-
-
 let loginname = " " + username.value;
 //let docSnap = await getDoc(doc(db, "users", loginname));
-
-
-
-//document.getElementById("login").onclick = function() {loginrequest()};
-
-
-//function loginrequest() {
-//    if (password.value === docSnap.data().password) {
-//        window.location.href = "/webapp/index.html";
-//    } else {
-//        alert("password or username is incorrect");
-//    }
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //getElementById("login").onclick = function() {};

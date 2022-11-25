@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { getFirestore, addDoc, setDoc, doc, collection } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
+import { getFirestore, addDoc, getDocs, setDoc, doc, collection, query, where } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -22,8 +22,43 @@ const db = getFirestore();
 
 document.getElementById("formsubmit").onclick = function() {taskcreation()};
 
+let userid = sessionStorage.getItem("userid");
+let projectname = sessionStorage.getItem("projectname");
+
+
 
 let taskid = 0;
+console.log(projectname);
+
+let name = "prosjekt";
+//let taskid = "prosjekt";
+const test = collection(db, 'users/', userid, "prosjekt", projectname, "save");
+const q = query(test, where("task", "!=", ""));
+
+
+const querySnapshot = await getDocs(q);
+querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  const div1 = document.createElement("div");
+  var a1 = document.createElement("a");
+  a1.setAttribute("href", "/webapp/index.html");
+  taskid += 1;
+  name += 1;
+  a1.className = "task-box";
+
+ 
+  let projectname = doc.id;
+  div1.append(projectname);
+  a1.id = taskid;
+  div1.className = "tbox";
+  a1.append(div1);
+  document.getElementById("tasks").appendChild(a1);
+  console.log(doc.id, " => ", doc.data());
+  sessionStorage.setItem("projectname", projectname);
+  sessionStorage.setItem("userid", userid);
+})
+
+
 
 
 function taskcreation() {
@@ -39,16 +74,16 @@ function taskcreation() {
     a.className = "task-box";
     category.className = "category-box";
 
-    var value = tname.value.trim();
-    var categoryname = tcategory.value.trim();
-    var descriptionname = tdescription.value.trim();
+    let value = tname.value.trim();
+    let categoryname = tcategory.value.trim();
+    let descriptionname = tdescription.value.trim();
 
     task.append(value);
     a.append(task);
     category.append(categoryname);
     
 
-
+    
     div.id = taskid;
     div.className = "tbox";
     div.setAttribute("draggable", "true");
@@ -63,9 +98,8 @@ function taskcreation() {
 
     //writes to database
 
-    addDoc(
-        collection(db, "users", "user", "save"), {
-    
+    setDoc(
+        doc(db, 'users/', userid, "prosjekt", projectname, "save", value), {
             task: value,
             category: categoryname,
             description: descriptionname

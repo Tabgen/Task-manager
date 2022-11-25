@@ -22,8 +22,11 @@ const db = getFirestore();
 const auth = getAuth();
 const database = getDatabase(app);
 
+
+
 let userid = sessionStorage.getItem("userid");
 console.log(userid);
+
 
 
  
@@ -46,9 +49,6 @@ console.log(userid);
 let name = "prosjekt";
 let taskid = "prosjekt";
 const test = collection(db, 'users/', userid, "prosjekt")
-
-
-
 const q = query(test, where("project", "!=", ""));
 
 
@@ -62,6 +62,7 @@ querySnapshot.forEach((doc) => {
   name += 1;
   a1.className = "task-box";
 
+ 
   let projectname = doc.id;
   div1.append(projectname);
   a1.id = taskid;
@@ -69,6 +70,8 @@ querySnapshot.forEach((doc) => {
   a1.append(div1);
   document.getElementById("saves-container").appendChild(a1);
   console.log(doc.id, " => ", doc.data());
+  sessionStorage.setItem("projectname", projectname);
+  sessionStorage.setItem("userid", userid);
 })
 
 
@@ -93,7 +96,7 @@ function projectcreation() {
     div.className = "tbox";
     a.append(div);
     document.getElementById("saves-container").appendChild(a);
-
+    
     //writes to database
 
 
@@ -101,7 +104,8 @@ function projectcreation() {
         doc(db, 'users/', userid, "prosjekt", projectname), {
             project: projectname
     });
-
+    sessionStorage.setItem("projectname", projectname);
+    sessionStorage.setItem("userid", userid);
 
     NewProject.value = "";
 }
