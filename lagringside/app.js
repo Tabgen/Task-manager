@@ -2,9 +2,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { getFirestore, addDoc, setDoc, doc, getDoc, collection } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
+import { getFirestore, getDocs, addDoc, setDoc, doc, getDoc, collection, where, query } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
 import { getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-auth.js";
-import {getDatabase, set, ref, update, query, } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js";
+import {getDatabase, set, ref, update, } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -26,49 +26,57 @@ let userid = sessionStorage.getItem("userid");
 console.log(userid);
 
 
-
-const docSnap = await getDoc(
-    doc(db, 'users/', userid,)
-  );
-
-console.log(docSnap.data())
+ 
 
 
 
-
-
-
-
-
-
+//const loading = await getDocs(
+//    query(
+//      doc(db, 'users/', userid,),
+//
+//    )
+//);
+//
+//
+//console.log(loading.data());
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+let name = "prosjekt";
 let taskid = "prosjekt";
+const test = collection(db, 'users/', userid, "prosjekt")
+
+
+
+const q = query(test, where("project", "!=", ""));
+
+
+const querySnapshot = await getDocs(q);
+querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  const div1 = document.createElement("div");
+  var a1 = document.createElement("a");
+  a1.setAttribute("href", "/webapp/index.html");
+  taskid += 1;
+  name += 1;
+  a1.className = "task-box";
+
+  let projectname = doc.id;
+  div1.append(projectname);
+  a1.id = taskid;
+  div1.className = "tbox";
+  a1.append(div1);
+  document.getElementById("saves-container").appendChild(a1);
+  console.log(doc.id, " => ", doc.data());
+})
+
+
+
+
+
+
+
 
 function projectcreation() {
     
@@ -76,8 +84,7 @@ function projectcreation() {
     var a = document.createElement("a");
     a.setAttribute("href", "/webapp/index.html");
     taskid += 1;
-    
-
+    name += 1;
     a.className = "task-box";
 
     let projectname = NewProject.value.trim();
@@ -86,14 +93,16 @@ function projectcreation() {
     div.className = "tbox";
     a.append(div);
     document.getElementById("saves-container").appendChild(a);
-    let docname = projectname += 1;
 
     //writes to database
 
+
     setDoc(
-        doc(db, 'users/', userid, projectname, ), {
-            Prosjekt: projectname
+        doc(db, 'users/', userid, "prosjekt", projectname), {
+            project: projectname
     });
+
+
     NewProject.value = "";
 }
 
