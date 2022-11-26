@@ -24,11 +24,12 @@ document.getElementById("formsubmit").onclick = function() {taskcreation()};
 
 let userid = sessionStorage.getItem("userid");
 let projectname = sessionStorage.getItem("projectname");
+let id = sessionStorage.getItem("id");
 
 
 
 let taskid = 0;
-console.log(projectname);
+console.log(id);
 
 let name = "prosjekt";
 //let taskid = "prosjekt";

@@ -27,12 +27,6 @@ const database = getDatabase(app);
 let userid = sessionStorage.getItem("userid");
 console.log(userid);
 
-
-
- 
-
-
-
 //const loading = await getDocs(
 //    query(
 //      doc(db, 'users/', userid,),
@@ -43,13 +37,19 @@ console.log(userid);
 //
 //console.log(loading.data());
 
-
-
-
 let name = "prosjekt";
 let taskid = "prosjekt";
 const test = collection(db, 'users/', userid, "prosjekt")
 const q = query(test, where("project", "!=", ""));
+
+function test5() {
+    alert("id");
+    let id = (clicked_id);
+
+    sessionStorage.setItem("id", id);
+    
+    //window.location.href = "/webapp/index.html";
+}
 
 
 const querySnapshot = await getDocs(q);
@@ -57,7 +57,8 @@ querySnapshot.forEach((doc) => {
   // doc.data() is never undefined for query doc snapshots
   const div1 = document.createElement("div");
   var a1 = document.createElement("a");
-  a1.setAttribute("href", "/webapp/index.html");
+  a1.setAttribute("href", "#");
+  a1.setAttribute("onclick", "test5()")
   taskid += 1;
   name += 1;
   a1.className = "task-box";
@@ -74,8 +75,7 @@ querySnapshot.forEach((doc) => {
   sessionStorage.setItem("userid", userid);
 })
 
-
-
+document.getElementsByClassName("task-box").onclick = function() {test5()};
 
 
 
@@ -85,14 +85,15 @@ function projectcreation() {
     
     const div = document.createElement("div");
     var a = document.createElement("a");
-    a.setAttribute("href", "/webapp/index.html");
+    //a.setAttribute("href", "/webapp/index.html");
+    a.setAttribute("href", "#");
     taskid += 1;
     name += 1;
     a.className = "task-box";
 
     let projectname = NewProject.value.trim();
     div.append(projectname);
-    a.id = taskid;
+    a.id = NewProject.value;
     div.className = "tbox";
     a.append(div);
     document.getElementById("saves-container").appendChild(a);
@@ -108,6 +109,7 @@ function projectcreation() {
     sessionStorage.setItem("userid", userid);
 
     NewProject.value = "";
+
 }
 
 document.getElementById("create").onclick = function () {projectcreation(), hide(), off()};
