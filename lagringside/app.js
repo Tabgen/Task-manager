@@ -54,15 +54,18 @@ function test5() {
 
 const querySnapshot = await getDocs(q);
 querySnapshot.forEach((doc) => {
+
+
   // doc.data() is never undefined for query doc snapshots
   const div1 = document.createElement("div");
   var a1 = document.createElement("a");
   a1.setAttribute("href", "#");
-  a1.setAttribute("onclick", "test5()")
+  a1.setAttribute("onclick", "x()");
   taskid += 1;
   name += 1;
   a1.className = "task-box";
 
+  
  
   let projectname = doc.id;
   div1.append(projectname);
@@ -75,8 +78,12 @@ querySnapshot.forEach((doc) => {
   sessionStorage.setItem("userid", userid);
 })
 
-document.getElementsByClassName("task-box").onclick = function() {test5()};
+//let x = document.getElementsByClassName("task-box").onclick;
 
+
+function x() {
+    alert("please, ikke ignorer detta scriptet");
+}
 
 
 
