@@ -42,14 +42,6 @@ let taskid = "prosjekt";
 const test = collection(db, 'users/', userid, "prosjekt")
 const q = query(test, where("project", "!=", ""));
 
-function test5() {
-    alert("id");
-    let id = (clicked_id);
-
-    sessionStorage.setItem("id", id);
-    
-    //window.location.href = "/webapp/index.html";
-}
 
 
 const querySnapshot = await getDocs(q);
@@ -58,15 +50,14 @@ querySnapshot.forEach((doc) => {
 
   // doc.data() is never undefined for query doc snapshots
   const div1 = document.createElement("div");
-  var a1 = document.createElement("a");
-  a1.setAttribute("href", "#");
-  a1.setAttribute("onclick", "x()");
+  var a1 = document.createElement("button");
+
+
   taskid += 1;
   name += 1;
   a1.className = "task-box";
 
-  
- 
+
   let projectname = doc.id;
   div1.append(projectname);
   a1.id = taskid;
@@ -76,14 +67,37 @@ querySnapshot.forEach((doc) => {
   console.log(doc.id, " => ", doc.data());
   sessionStorage.setItem("projectname", projectname);
   sessionStorage.setItem("userid", userid);
+
+  var buttons = document.getElementsByTagName("button");
+  var buttonsCount = buttons.length;
+  for (var i = 0; i < buttonsCount; i += 1) {
+      buttons[i].onclick = function(e) {
+          let prosjektid = this.id;
+          console.log(prosjektid);
+          sessionStorage.setItem("prosjektid", prosjektid);
+          //window.location.href = "/webapp/index.html";  
+      };
+  }
+
 })
 
 //let x = document.getElementsByClassName("task-box").onclick;
 
+function clickHandler(event) {
+    console.log('Button Clicked');
+ }
 
-function x() {
-    alert("please, ikke ignorer detta scriptet");
-}
+//function reply_click(obj) {
+//    var id = obj.id;
+//    console.log(id);
+//}
+//
+//let container = document.getElementById("saves-container");
+//
+//const klikkende = await document.querySelector(".task-box");
+//klikkende.addEventListener("click", reply_click(this));
+
+
 
 
 
@@ -91,8 +105,8 @@ function x() {
 function projectcreation() {
     
     const div = document.createElement("div");
-    var a = document.createElement("a");
-    //a.setAttribute("href", "/webapp/index.html");
+    var a = document.createElement("button");
+    a.setAttribute("href", "/webapp/index.html");
     a.setAttribute("href", "#");
     taskid += 1;
     name += 1;
@@ -114,7 +128,7 @@ function projectcreation() {
     });
     sessionStorage.setItem("projectname", projectname);
     sessionStorage.setItem("userid", userid);
-
+    sessionStorage.setItem("prosjektid", projectname);
     NewProject.value = "";
 
 }
