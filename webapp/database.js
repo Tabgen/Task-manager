@@ -20,17 +20,17 @@ const db = getFirestore();
 
 
 
-document.getElementById("formsubmit").onclick = function() {taskcreation()};
+document.getElementById("formsubmit").onclick = function() {taskcreation(), off()};
 
 let userid = sessionStorage.getItem("userid");
 let projectname = sessionStorage.getItem("projectname");
 let id = sessionStorage.getItem("id");
-let prosjektid = sessionStorage.getItem("prosesjektid");
+let prosjektid = sessionStorage.getItem("prosjektid");
 
 console.log(prosjektid);
 
 let taskid = 0;
-console.log(id);
+
 
 let name = "prosjekt";
 //let taskid = "prosjekt";
@@ -71,7 +71,7 @@ querySnapshot.forEach((doc) => {
   document.getElementById("tasks").appendChild(div);
   document.getElementById("taskforum").classList.remove("show");
   console.log(doc.id, " => ", doc.data());
-  div1.append(projectname);
+ 
 })
 
 
@@ -115,11 +115,15 @@ function taskcreation() {
     //writes to database
 
     setDoc(
-        doc(db, 'users/', userid, "prosjekt", projectname, "save", value), {
+        doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value), {
             task: value,
             category: categoryname,
             description: descriptionname
         
     });
 
+}
+
+function off() {
+    document.getElementById("overlay").style.display = "none";
 }

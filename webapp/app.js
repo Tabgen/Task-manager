@@ -2,6 +2,8 @@ document.getElementById("task").onclick = function() {newtask(), on()};
 
 document.getElementById("cancel").onclick = function() {hide(), off()}
 
+
+
 function newtask() {
     document.getElementById("taskforum").classList.toggle("show");
 }
@@ -52,6 +54,6 @@ function on() {
     document.getElementById("overlay").style.display = "block";
 }
   
-  function off() {
+function off() {
     document.getElementById("overlay").style.display = "none";
 }

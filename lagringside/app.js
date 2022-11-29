@@ -2,9 +2,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { getFirestore, getDocs, addDoc, setDoc, doc, getDoc, collection, where, query } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
+import { getFirestore, getDocs, addDoc, setDoc, doc, getDoc, collection, where, query, deleteDoc } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
 import { getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-auth.js";
-import {getDatabase, set, ref, update, } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js";
+import {getDatabase, set, ref, update,  } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -23,32 +23,21 @@ const auth = getAuth();
 const database = getDatabase(app);
 
 
-
 let userid = sessionStorage.getItem("userid");
 console.log(userid);
-
-//const loading = await getDocs(
-//    query(
-//      doc(db, 'users/', userid,),
-//
-//    )
-//);
-//
-//
-//console.log(loading.data());
 
 let name = "prosjekt";
 let taskid = "prosjekt";
 const test = collection(db, 'users/', userid, "prosjekt")
 const q = query(test, where("project", "!=", ""));
 
-
-
 const querySnapshot = await getDocs(q);
 querySnapshot.forEach((doc) => {
 
 
   // doc.data() is never undefined for query doc snapshots
+  const div3 = document.createElement("div");
+  const div2 = document.createElement("button");
   const div1 = document.createElement("div");
   var a1 = document.createElement("button");
 
@@ -57,12 +46,17 @@ querySnapshot.forEach((doc) => {
   name += 1;
   a1.className = "task-box";
 
-
+  div2.append("x")
+  div2.id = "delete";
+  div3.className = "alignment";
+  div2.className = "cross";
   let projectname = doc.id;
   div1.append(projectname);
-  a1.id = taskid;
+  a1.id = doc.id; 
   div1.className = "tbox";
-  a1.append(div1);
+  div3.append(div1)
+  div3.append(div2)
+  a1.append(div3);
   document.getElementById("saves-container").appendChild(a1);
   console.log(doc.id, " => ", doc.data());
   sessionStorage.setItem("projectname", projectname);
@@ -75,29 +69,12 @@ querySnapshot.forEach((doc) => {
           let prosjektid = this.id;
           console.log(prosjektid);
           sessionStorage.setItem("prosjektid", prosjektid);
-          //window.location.href = "/webapp/index.html";  
+          window.location.href = "/webapp/index.html";
+           
       };
   }
 
 })
-
-//let x = document.getElementsByClassName("task-box").onclick;
-
-function clickHandler(event) {
-    console.log('Button Clicked');
- }
-
-//function reply_click(obj) {
-//    var id = obj.id;
-//    console.log(id);
-//}
-//
-//let container = document.getElementById("saves-container");
-//
-//const klikkende = await document.querySelector(".task-box");
-//klikkende.addEventListener("click", reply_click(this));
-
-
 
 
 
@@ -125,13 +102,37 @@ function projectcreation() {
     setDoc(
         doc(db, 'users/', userid, "prosjekt", projectname), {
             project: projectname
+
     });
+
+    for (var i = 0; i < buttonsCount; i += 1) {
+        buttons[i].onclick = function(e) {
+            let prosjektid = this.id;
+            console.log(prosjektid);
+            sessionStorage.setItem("prosjektid", prosjektid);
+            window.location.href = "/webapp/index.html";
+             
+        };
+    }
+
     sessionStorage.setItem("projectname", projectname);
     sessionStorage.setItem("userid", userid);
     sessionStorage.setItem("prosjektid", projectname);
     NewProject.value = "";
-
 }
+
+function deleteitems() {
+    for (var i = 0; i < buttonsCount; i += 1) {
+        buttons[i].onclick = function(e) {
+            let prosjektid = this.id;
+            console.log(prosjektid);
+            deleteDoc(doc(db, 'users/', userid, "prosjekt", prosjektid))
+        };
+    }
+    
+}
+
+document.getElementById("delete").onclick = function() {deleteitems()};
 
 document.getElementById("create").onclick = function () {projectcreation(), hide(), off()};
 
