@@ -32,14 +32,14 @@ const test = collection(db, 'users/', userid, "prosjekt")
 const q = query(test, where("project", "!=", ""));
 
 const querySnapshot = await getDocs(q);
-querySnapshot.forEach((doc) => {
+querySnapshot.forEach((docs) => {
 
 
   // doc.data() is never undefined for query doc snapshots
   const div3 = document.createElement("div");
   const div2 = document.createElement("button");
-  const div1 = document.createElement("div");
-  var a1 = document.createElement("button");
+  const div1 = document.createElement("button");
+  var a1 = document.createElement("div");
 
 
   taskid += 1;
@@ -47,29 +47,46 @@ querySnapshot.forEach((doc) => {
   a1.className = "task-box";
 
   div2.append("x")
-  div2.id = "delete";
+  div2.id = docs.id;
+  div3.id = docs.id;
   div3.className = "alignment";
   div2.className = "cross";
-  let projectname = doc.id;
+  let projectname = docs.id;
   div1.append(projectname);
-  a1.id = doc.id; 
+  a1.id = docs.id; 
   div1.className = "tbox";
+  div1.id = docs.id;
   div3.append(div1)
   div3.append(div2)
   a1.append(div3);
   document.getElementById("saves-container").appendChild(a1);
-  console.log(doc.id, " => ", doc.data());
+  console.log(docs.id, " => ", docs.data());
   sessionStorage.setItem("projectname", projectname);
   sessionStorage.setItem("userid", userid);
 
-  var buttons = document.getElementsByTagName("button");
-  var buttonsCount = buttons.length;
-  for (var i = 0; i < buttonsCount; i += 1) {
+  let buttons = document.getElementsByTagName("button");
+  let buttonsCount = buttons.length;
+
+
+
+  for (let i = 0; i < buttonsCount; i += 1) {
       buttons[i].onclick = function(e) {
           let prosjektid = this.id;
+          let classid = this.className;
           console.log(prosjektid);
           sessionStorage.setItem("prosjektid", prosjektid);
-          window.location.href = "/webapp/index.html";
+          
+          if (classid == "cross") {
+            let test1 = doc(db, 'users/', userid, "prosjekt", prosjektid);
+            deleteDoc(test1);
+            //må finne en bedre løsning tror det er smartest å bare slette divene når den blir executa og må slette alle subcollectionsa ikke bare dokumentet
+            setTimeout(function(){
+                window.location.reload();
+             }, 1000);
+          }else {
+            window.location.href = "/webapp/index.html";
+          }
+          
            
       };
   }
@@ -81,39 +98,45 @@ querySnapshot.forEach((doc) => {
 
 function projectcreation() {
     
-    const div = document.createElement("div");
-    var a = document.createElement("button");
-    a.setAttribute("href", "/webapp/index.html");
-    a.setAttribute("href", "#");
+    const div3 = document.createElement("div");
+    const div2 = document.createElement("button");
+    const div1 = document.createElement("button");
+    var a1 = document.createElement("div");
+  
+  
     taskid += 1;
     name += 1;
-    a.className = "task-box";
-
-    let projectname = NewProject.value.trim();
-    div.append(projectname);
-    a.id = NewProject.value;
-    div.className = "tbox";
-    a.append(div);
-    document.getElementById("saves-container").appendChild(a);
-    
-    //writes to database
-
+    a1.className = "task-box";
+  
+    div2.append("x")
+    div2.id = NewProject.value;
+    div3.id = NewProject.value;
+    div3.className = "alignment";
+    div2.className = "cross";
+    let projectname = NewProject.value;
+    div1.append(projectname);
+    a1.id = NewProject.value; 
+    div1.className = "tbox";
+    div1.id = NewProject.value;
+    div3.append(div1)
+    div3.append(div2)
+    a1.append(div3);
+    document.getElementById("saves-container").appendChild(a1);
+    sessionStorage.setItem("projectname", projectname);
+    sessionStorage.setItem("userid", userid);
+  
+    let buttons1 = document.getElementsByTagName("button");
+    let buttonsCount1 = buttons1.length;
+    let prosjektid = NewProject.value;
+    sessionStorage.setItem("prosjektid", prosjektid);
+    window.location.href = "/webapp/index.html";
 
     setDoc(
         doc(db, 'users/', userid, "prosjekt", projectname), {
             project: projectname
-
     });
 
-    for (var i = 0; i < buttonsCount; i += 1) {
-        buttons[i].onclick = function(e) {
-            let prosjektid = this.id;
-            console.log(prosjektid);
-            sessionStorage.setItem("prosjektid", prosjektid);
-            window.location.href = "/webapp/index.html";
-             
-        };
-    }
+
 
     sessionStorage.setItem("projectname", projectname);
     sessionStorage.setItem("userid", userid);
@@ -121,18 +144,7 @@ function projectcreation() {
     NewProject.value = "";
 }
 
-function deleteitems() {
-    for (var i = 0; i < buttonsCount; i += 1) {
-        buttons[i].onclick = function(e) {
-            let prosjektid = this.id;
-            console.log(prosjektid);
-            deleteDoc(doc(db, 'users/', userid, "prosjekt", prosjektid))
-        };
-    }
-    
-}
 
-document.getElementById("delete").onclick = function() {deleteitems()};
 
 document.getElementById("create").onclick = function () {projectcreation(), hide(), off()};
 
@@ -156,3 +168,4 @@ function off() {
 function hide() {
     document.getElementById("modal").style.display = "none";
 }
+
