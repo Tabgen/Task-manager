@@ -108,30 +108,6 @@ function loginaccount() {
 }
 
 
-//function createaccounts() {
-//    
-//
-//    var username = newusername.value.trim();
-//
-//
-//    //writes to database
-//
-//    setDoc(
-//        doc(db, "users", username), {
-//            email: email,
-//            username: username,
-//            password: password,
-//    });
-//
-//    newemail.value = "";
-//    newusername.value = "";
-//    newpassword.value = "";
-//    renewpassword.value = "";
-//}
-
-
-
-
 
 let loginname = " " + username.value;
 //let docSnap = await getDoc(doc(db, "users", loginname));
