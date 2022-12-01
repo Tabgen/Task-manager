@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { getFirestore, getDocs, addDoc, setDoc, doc, getDoc, collection, where, query, deleteDoc } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
+import { getFirestore, updateDoc, getDocs, addDoc, setDoc, doc, getDoc, collection, where, query, deleteDoc } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
 import { getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-auth.js";
 import {getDatabase, set, ref, update,  } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js";
 
@@ -72,17 +72,22 @@ querySnapshot.forEach((docs) => {
   for (let i = 0; i < buttonsCount; i += 1) {
       buttons[i].onclick = function(e) {
           let prosjektid = this.id;
+          let removeid = document.getElementById(prosjektid);
           let classid = this.className;
           console.log(prosjektid);
           sessionStorage.setItem("prosjektid", prosjektid);
           
           if (classid == "cross") {
-            let test1 = doc(db, 'users/', userid, "prosjekt", prosjektid);
+            let test1 = doc(db, 'users/', userid, "prosjekt", prosjektid); 
+
+                   
             deleteDoc(test1);
+            removeid.remove();
+            
             //må finne en bedre løsning tror det er smartest å bare slette divene når den blir executa og må slette alle subcollectionsa ikke bare dokumentet
-            setTimeout(function(){
-                window.location.reload();
-             }, 1000);
+            //setTimeout(function(){
+            //    window.location.reload();
+            // }, 1000);
           }else {
             window.location.href = "/webapp/index.html";
           }
@@ -129,7 +134,7 @@ function projectcreation() {
     let buttonsCount1 = buttons1.length;
     let prosjektid = NewProject.value;
     sessionStorage.setItem("prosjektid", prosjektid);
-    window.location.href = "/webapp/index.html";
+   
 
     setDoc(
         doc(db, 'users/', userid, "prosjekt", projectname), {
@@ -141,7 +146,34 @@ function projectcreation() {
     sessionStorage.setItem("projectname", projectname);
     sessionStorage.setItem("userid", userid);
     sessionStorage.setItem("prosjektid", projectname);
-    NewProject.value = "";
+    NewProject.value = ""; 
+    //window.location.href = "/webapp/index.html";
+
+    let buttons = document.getElementsByTagName("button");
+    let buttonsCount = buttons.length;
+
+    for (let i = 0; i < buttonsCount; i += 1) {
+        buttons[i].onclick = function(e) {
+            let prosjektid = this.id;
+            let removeid = document.getElementById(prosjektid);
+            let classid = this.className;
+            console.log(prosjektid);
+            sessionStorage.setItem("prosjektid", prosjektid);
+            
+            if (classid == "cross") {
+              let test1 = doc(db, 'users/', userid, "prosjekt", prosjektid);
+              let test2 = doc(db, 'users/', userid, "prosjekt", prosjektid, "save")
+              deleteDoc(test1);
+              deleteDoc(test2);
+              removeid.remove();
+  
+            }else {
+              window.location.href = "/webapp/index.html";
+            }
+            
+             
+        };
+    }
 }
 
 

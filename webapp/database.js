@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { getFirestore, addDoc, getDocs, setDoc, doc, collection, query, where } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
+import { getFirestore, addDoc, getDocs, setDoc, doc, deleteDoc, collection, query, where } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -39,10 +39,14 @@ const q = query(test, where("task", "!=", ""));
 
 
 const querySnapshot = await getDocs(q);
-querySnapshot.forEach((doc) => {
+querySnapshot.forEach((docs) => {
   // doc.data() is never undefined for query doc snapshots
   const div = document.createElement("div");
-  var a = document.createElement("a");
+  let a = document.createElement("div");
+  let div1 = document.createElement("div");
+  let btn = document.createElement("button");
+  let div2 = document.createElement("div");
+
   a.setAttribute("href", "#test");
   taskid += 1;
   
@@ -51,26 +55,65 @@ querySnapshot.forEach((doc) => {
 
   a.className = "task-box";
   category.className = "category-box";
+  div1.className = "alignment-left";
+  btn.innerHTML = "x";
 
-  let value = doc.data().task;
-  let categoryname = doc.data().category;
-  let descriptionname = doc.data().description;
+  btn.className = "delete-btn";
+  div2.className = "cross";
 
+
+  let value = docs.data().task;
+  let categoryname = docs.data().category;
+  let descriptionname = docs.data().description;
+  btn.id = value;
   task.append(value);
   a.append(task);
   category.append(categoryname);
-  
+  div2.append(a);
+  div2.append(category);
+  div1.append(div2)
+  div1.append(btn);
+
+
+  let buttons = document.getElementsByClassName("button");
+  let buttonsCount = buttons.length;
+
+  for (let i = 0; i < buttonsCount; i += 1) {
+    buttons[i].onclick = function(e) {
+        let removeid = document.getElementById(prosjektid);
+        let classid = this.className;
+        let slettid = this.id;
+        console.log(prosjektid);
+
+        sessionStorage.setItem("prosjektid", prosjektid);
+        
+
+        if (classid == "delete-btn") {
+          let test2 = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", slettid); 
+
+            console.log("semi funke")
+                    
+            deleteDoc(test2);
+            removeid.remove();
+
+        }else {
+            console.log("ikke funke")
+        }}
+        
+        
+    };
 
   
-  div.id = taskid;
+  div.id = value;
   div.className = "tbox";
   div.setAttribute("draggable", "true");
   div.setAttribute("ondragstart","drag(event)");
-  div.append(a);
-  div.append(category);
+  div.append(div1);
   document.getElementById("tasks").appendChild(div);
   document.getElementById("taskforum").classList.remove("show");
-  console.log(doc.id, " => ", doc.data());
+  console.log(docs.id, " => ", docs.data());
+
+
  
 })
 
