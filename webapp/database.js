@@ -65,7 +65,8 @@ querySnapshot.forEach((docs) => {
   let value = docs.data().task;
   let categoryname = docs.data().category;
   let descriptionname = docs.data().description;
-  btn.id = value;
+  btn.id = "delete";
+  let bid = btn.id;
   task.append(value);
   a.append(task);
   category.append(categoryname);
@@ -75,33 +76,33 @@ querySnapshot.forEach((docs) => {
   div1.append(btn);
 
 
-  let buttons = document.getElementsByClassName("button");
-  let buttonsCount = buttons.length;
+  //let buttons = document.getElementsByClassName("button");
+  //let buttonsCount = buttons.length;
 
-  for (let i = 0; i < buttonsCount; i += 1) {
-    buttons[i].onclick = function(e) {
-        let removeid = document.getElementById(prosjektid);
-        let classid = this.className;
-        let slettid = this.id;
-        console.log(prosjektid);
+  //for (let i = 0; i < buttonsCount; i += 1) {
+  //  buttons[i].onclick = function(e) {
+  //      let removeid = document.getElementById(prosjektid);
+  //      let classid = this.className;
+  //      let slettid = this.id;
+  //      console.log(prosjektid);
 
-        sessionStorage.setItem("prosjektid", prosjektid);
-        
+  //      sessionStorage.setItem("prosjektid", prosjektid);
+  //      
 
-        if (classid == "delete-btn") {
-          let test2 = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", slettid); 
+  //      if (classid == "delete-btn") {
+  //        let test2 = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", slettid); 
 
-            console.log("semi funke")
-                    
-            deleteDoc(test2);
-            removeid.remove();
+  //          console.log("semi funke")
+  //                  
+  //          deleteDoc(test2);
+  //          removeid.remove();
 
-        }else {
-            console.log("ikke funke")
-        }}
-        
-        
-    };
+  //      }else {
+  //          console.log("ikke funke")
+  //      }}
+  //      
+  //      
+  //  };
 
   
   div.id = value;
@@ -113,9 +114,16 @@ querySnapshot.forEach((docs) => {
   document.getElementById("taskforum").classList.remove("show");
   console.log(docs.id, " => ", docs.data());
 
-
+  btn.id.onclick = function(e) {
+    let test2 = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value);
+    let removeid = document.getElementById(prosjektid);
+    deleteDoc(test2);
+    removeid.remove();
+}
+  
  
 })
+
 
 
 
