@@ -22,7 +22,14 @@ function togglemenu() {
 }
 
 
+const innerprogress = document.getElementById("progress").querySelector("tbox");
 
+
+function status() {
+    innerprogress.forEach((doccs) => {
+        console.log(doccs.id);
+    })
+}
 
 
 function hide() {
@@ -57,3 +64,16 @@ function on() {
 function off() {
     document.getElementById("overlay").style.display = "none";
 }
+
+//function test() {
+//
+//    value = querysel
+//
+//    setDoc(
+//        doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value), {
+//            task: value,
+//            category: categoryname,
+//            description: descriptionname
+//        
+//    });
+//}
