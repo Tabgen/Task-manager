@@ -90,12 +90,7 @@ querySnapshot.forEach((docs) => {
     removeid.remove();
   
 }
-  
- 
 })
-
-
-
 
 
 function taskcreation() {
@@ -150,9 +145,6 @@ function taskcreation() {
     removeid.remove();
 }
 
-
-
-
     document.getElementById("tasks").appendChild(div);
     document.getElementById("taskforum").classList.remove("show");
     tname.value = "";
@@ -170,8 +162,6 @@ function taskcreation() {
     });
 
 }
-
-
 
 function off() {
     document.getElementById("overlay").style.display = "none";
