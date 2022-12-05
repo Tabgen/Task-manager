@@ -52,7 +52,7 @@ nav ul li a:hover {
     color: rgb(26, 0, 48);
 }
 
-main {
+section {
     display: flex;
     flex-direction: row;
     gap: 2.5rem;

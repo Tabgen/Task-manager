@@ -34,6 +34,11 @@ let taskid = 0;
 const test = collection(db, 'users/', userid, "prosjekt", prosjektid, "save");
 const q = query(test, where("task", "!=", ""));
 
+function addstatus() {
+    const select = document.querySelectorAll('section > div:nth-child');
+    forEach(select, function() {})
+}
+
 
 
 const querySnapshot = await getDocs(q);
