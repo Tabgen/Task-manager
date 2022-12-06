@@ -34,14 +34,14 @@ let taskid = 0;
 const test = collection(db, 'users/', userid, "prosjekt", prosjektid, "save");
 const q = query(test, where("task", "!=", ""));
 
-function addstatus() {
-    const select = document.querySelectorAll('section > div:nth-child');
-    select.forEach((docx) => { 
-
-        let taskref = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value)
-        updateDoc()
-}
-}
+//function addstatus() {
+//    const select = document.querySelectorAll('section > div:nth-child');
+//    select.forEach((docx) => { 
+//
+//        let taskref = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value);
+//       // updateDoc();
+//        }
+//};
 
 
 
