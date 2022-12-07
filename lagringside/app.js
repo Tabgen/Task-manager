@@ -28,8 +28,8 @@ console.log(userid);
 
 let name = "prosjekt";
 let taskid = "prosjekt";
-const test = collection(db, 'users/', userid, "prosjekt")
-const q = query(test, where("project", "!=", ""));
+const saveref = collection(db, 'users/', userid, "prosjekt")
+const q = query(saveref, where("project", "!=", ""));
 
 const querySnapshot = await getDocs(q);
 querySnapshot.forEach((docs) => {
