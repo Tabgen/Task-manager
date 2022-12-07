@@ -31,8 +31,8 @@ console.log(prosjektid);
 
 let taskid = 0;
 
-const test = collection(db, 'users/', userid, "prosjekt", prosjektid, "save");
-const q = query(test, where("task", "!=", ""));
+const saveref = collection(db, 'users/', userid, "prosjekt", prosjektid, "save");
+const q = query(saveref, where("task", "!=", ""));
 
 function addstatus() {
     const select = document.querySelectorAll('section > div:nth-child');
