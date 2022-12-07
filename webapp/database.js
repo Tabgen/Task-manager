@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { getFirestore, addDoc, getDocs, setDoc, doc, deleteDoc, collection, query, where } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
+import { getFirestore, addDoc, getDocs, setDoc, doc, deleteDoc, collection, query, where, updateDoc} from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -34,10 +34,14 @@ let taskid = 0;
 const saveref = collection(db, 'users/', userid, "prosjekt", prosjektid, "save");
 const q = query(saveref, where("task", "!=", ""));
 
-function addstatus() {
-    const select = document.querySelectorAll('section > div:nth-child');
-    forEach(select, function() {})
-}
+//function addstatus() {
+//    const select = document.querySelectorAll('section > div:nth-child');
+//    select.forEach((docx) => { 
+//
+//        let taskref = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value);
+//       // updateDoc();
+//        }
+//};
 
 
 
