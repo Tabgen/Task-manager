@@ -22,7 +22,7 @@ function togglemenu() {
 }
 
 function addstatus() {
-    const select = document.querySelectorAll('section > div:nth-child');
+    const select = document.querySelectorAll('select divs inside of div');
     select.forEach((docx) => { 
 
         let divid = docx.id;
