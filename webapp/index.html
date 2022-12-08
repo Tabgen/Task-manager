@@ -19,7 +19,7 @@
 
 <body>
 
-    <script type="module" src="database.js"></script>
+
 
     <header>
         <div class="navbar">
@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <div class="container" id="progress" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="container" id="progress" ondrop="drop(event), addstatus()" ondragover="allowDrop(event)">
             <h2>In progress</h2>
         </div>
 
@@ -79,7 +79,7 @@
     </section>
 
 
-
+    <script type="module" src="database.js"></script>
     <script src="app.js"></script>
 
 
