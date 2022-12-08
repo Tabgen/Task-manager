@@ -34,14 +34,17 @@ let taskid = 0;
 const saveref = collection(db, 'users/', userid, "prosjekt", prosjektid, "save");
 const q = query(saveref, where("task", "!=", ""));
 
-//function addstatus() {
-//    const select = document.querySelectorAll('section > div:nth-child');
-//    select.forEach((docx) => { 
-//
-//        let taskref = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value);
-//       // updateDoc();
-//        }
-//};
+function addstatus() {
+    const select = document.querySelectorAll('section > div:nth-child');
+    select.forEach((docx) => { 
+
+        let divid = docx.id;
+        console.log(divid);
+
+        let taskref = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", divid);
+       // updateDoc();
+        })
+};
 
 
 

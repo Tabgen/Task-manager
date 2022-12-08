@@ -21,7 +21,17 @@ function togglemenu() {
     }
 }
 
+function addstatus() {
+    const select = document.querySelectorAll('section > div:nth-child');
+    select.forEach((docx) => { 
 
+        let divid = docx.id;
+        console.log(divid);
+
+        //let taskref = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", divid);
+       // updateDoc();
+        })
+};
 
 function hide() {
     document.getElementById("overlay").style.display = "none";
