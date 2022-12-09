@@ -21,17 +21,24 @@ function togglemenu() {
     }
 }
 
-function addstatus() {
-    const select = document.querySelectorAll('select divs inside of div');
-    select.forEach((docx) => { 
-
-        let divid = docx.id;
-        console.log(divid);
-
-        //let taskref = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", divid);
-       // updateDoc();
-        })
-};
+//function addstatus() {
+//
+//    let parentdiv = document.getElementById("progress");
+//
+//    const select = parentdiv.querySelectorAll('.tbox');
+//    select.forEach((select) => { 
+//
+//        let divid = select.id;
+//        console.log(divid);
+//
+//        let taskref = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", divid);
+//
+//        updateDoc(taskref, {
+//            Status: 2
+//        });
+//
+//        })
+//};
 
 function hide() {
     document.getElementById("overlay").style.display = "none";
@@ -66,3 +73,5 @@ function on() {
 function off() {
     document.getElementById("overlay").style.display = "none";
 }
+
+//document.getElementById("progress").ondrop = function() {drop(ev)};

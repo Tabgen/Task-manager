@@ -61,7 +61,7 @@
     <div id="overlay"></div>
     <section id="main">
         
-        <div class="container" id="tasks" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="container" id="tasks" ondrop="drop(event), addstatus()" ondragover="allowDrop(event)">
             <div class="upper-container">
                 <h2>Tasks</h2> <button id="task">+</button>
             </div>
@@ -71,7 +71,7 @@
             <h2>In progress</h2>
         </div>
 
-        <div class="container" id="complete" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="container" id="complete" ondrop="drop(event), addstatus()" ondragover="allowDrop(event)">
             <h2>completed</h3>
         </div>
 
@@ -82,7 +82,7 @@
     <script type="module" src="database.js"></script>
     <script src="app.js"></script>
 
-
+<!--ondrop="drop(event)"--->
 
 
 </body>

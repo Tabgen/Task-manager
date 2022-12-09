@@ -29,9 +29,9 @@ console.log(userid);
 let name = "prosjekt";
 let taskid = "prosjekt";
 const saveref = collection(db, 'users/', userid, "prosjekt")
-const q = query(saveref, where("project", "!=", ""));
+const x = query(saveref, where("project", "!=", ""));
 
-const querySnapshot = await getDocs(q);
+const querySnapshot = await getDocs(x);
 querySnapshot.forEach((docs) => {
 
 
@@ -79,8 +79,15 @@ querySnapshot.forEach((docs) => {
           
           if (classid == "cross") {
             let test1 = doc(db, 'users/', userid, "prosjekt", prosjektid); 
-
+            const saveref1 = collection(db, 'users/', userid, "prosjekt", projectname, "save");
+            const q = query(saveref1, where("task", "!=", ""));
                    
+            //const querySnapshot1 = getDocs(q);
+            //querySnapshot1.forEach((docs1) => {
+            //    let deletecollection = docs1.id;
+            //    deleteDoc(deletecollection);
+            //})
+
             deleteDoc(test1);
             removeid.remove();
             
@@ -92,7 +99,6 @@ querySnapshot.forEach((docs) => {
             window.location.href = "/webapp/index.html";
           }
           
-           
       };
   }
 

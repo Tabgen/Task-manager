@@ -60,7 +60,7 @@ querySnapshot.forEach((docs) => {
   btn.className = "delete-btn";
   div2.className = "cross";
 
-
+  let statuscheck = docs.data().status;
   let value = docs.data().task;
   let categoryname = docs.data().category;
   let descriptionname = docs.data().description;
@@ -79,7 +79,16 @@ querySnapshot.forEach((docs) => {
   div.setAttribute("draggable", "true");
   div.setAttribute("ondragstart","drag(event)");
   div.append(div1);
-  document.getElementById("tasks").appendChild(div);
+  if (statuscheck == "2") {
+    document.getElementById("progress").appendChild(div);
+  } else if (statuscheck == "3") {
+    document.getElementById("complete").appendChild(div);
+  } else {
+    document.getElementById("tasks").appendChild(div);
+  }
+
+    
+
   document.getElementById("taskforum").classList.remove("show");
   console.log(docs.id, " => ", docs.data());
   let buttonid = document.getElementById("delete");
@@ -92,6 +101,7 @@ querySnapshot.forEach((docs) => {
   
 }
 })
+
 
 
 function taskcreation() {
@@ -158,11 +168,84 @@ function taskcreation() {
         doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value), {
             task: value,
             category: categoryname,
-            description: descriptionname
+            description: descriptionname,
+            status: "0"
         
     });
 
 }
+
+
+
+
+
+function addstatus() {
+
+    setTimeout(() => {  
+        let parentdiv = document.getElementById("progress");
+
+        const select = parentdiv.querySelectorAll('.tbox');
+        select.forEach((select) => { 
+
+            let divid = select.id;
+            console.log(divid);
+
+            let taskref = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", divid);
+
+            updateDoc(taskref, {
+                status: 2
+            });
+
+            })
+        }, 2000);
+
+    setTimeout(() => {  
+        let parentdiv = document.getElementById("complete");
+    
+        const select = parentdiv.querySelectorAll('.tbox');
+        select.forEach((select) => { 
+    
+            let divid = select.id;
+            console.log(divid);
+    
+            let taskref = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", divid);
+    
+            updateDoc(taskref, {
+                status: 3
+            });
+    
+            })
+        }, 2000);
+        
+    setTimeout(() => {  
+        let parentdiv = document.getElementById("tasks");
+    
+        const select = parentdiv.querySelectorAll('.tbox');
+        select.forEach((select) => { 
+    
+            let divid = select.id;
+            console.log(divid);
+    
+            let taskref = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", divid);
+    
+            updateDoc(taskref, {
+                status: 1
+            });
+     
+            })
+        }, 2000);
+};
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+    
+}
+
+document.getElementById("tasks").ondrop = function() {addstatus(), drop(event)};
+document.getElementById("progress").ondrop = function() {addstatus(), drop(event)};
+document.getElementById("complete").ondrop = function() {addstatus(), drop(event)};
 
 function off() {
     document.getElementById("overlay").style.display = "none";
