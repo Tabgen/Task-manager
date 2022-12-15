@@ -274,6 +274,10 @@ footer {
 }
 
 @media only screen and (min-width: 2000px) {
+    body {
+        width: 100vw;
+    }
+
     .width-container {
         width: 60vw;
     }
