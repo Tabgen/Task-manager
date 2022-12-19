@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="avatar">
+                "Icon"
+            </div>
+            <div class="navbuttons">
+                <a href="#Dashboard">Dashboard</a>
+                <button id="new-project">New project</button>
+            </div>
+        </nav>
+    </header>
+    <div id="overlay"></div>
+    <div class="modal" id="modal">
+        <div class="create-project">
+            <input type="text" class="newproject" id="NewProject" placeholder="Project name">
+            <div class="tcreatecancel">
+                <button id="create" class="cancel">create</button>
+                <button id="cancel" class="cancel">cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <section class="section1">
+        <div class="saves-container" id="saves-container">
+
+        </div>
+    </section>
+
+    <script src="app.js" type="module"></script>
+
+</body>
+</html>

@@ -1,0 +1,312 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    background-color: rgba(32, 31, 78, 0);
+}
+
+.logo {
+    width: 50px;
+    cursor: pointer;
+    margin: 10px;
+    padding-left: 50px;
+    color: white;
+}
+
+.menu-icon {
+    width: 25px;
+    cursor: pointer;
+    display: none;
+}
+
+nav {
+    flex: 1;
+    text-align: right;
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 30px;
+    margin-top: -10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 1.4rem;
+    padding: 5px;
+    
+
+}
+
+nav ul li a:hover {
+    color: rgb(26, 0, 48);
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
+    justify-content: center;
+}
+
+.container {
+    display:flex;
+    text-align: left;
+    height: 900px;
+    width: 400px;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.863);
+    border-radius: 40px;
+    padding: 20px;
+    
+}
+
+.upper-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.upper-container button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    padding: none;
+    cursor: pointer;
+    padding-bottom: 5px;
+    padding-top: 0px;
+    padding-right: 5px;
+    margin-bottom: 10px;
+}
+
+.container h2 {
+    font-size: 1.5rem;
+    padding-bottom: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+
+
+.actions {
+    flex-direction: column;
+    width: 400px;
+}
+
+.actions button {
+    display: block;
+    padding: 5px;
+    margin-top: 0px;
+    margin: 5px;
+    border: 2px solid rgba(0, 0, 0, 0);
+    background-color: rgba(255, 255, 255, 0);
+    cursor: pointer;
+    font-size: 1.7rem;
+}
+
+.actions button:hover {
+    color: rgb(11, 11, 102);
+}
+
+.taskforum {
+    border: 1px solid rgb(124, 124, 124);
+    height: 370px;
+    width: 450px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: 100px;
+    border-radius: 33px;
+    display: none;
+    background-color: #fff;
+    z-index: 11;
+}
+
+.taskforum button{
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 170px;
+}
+
+.createtask {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+
+}
+
+.createtask h2 {
+    font-size: 1.2rem;
+}
+
+.createtask input {
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-size: 1.2rem;
+}
+
+.close-form {
+    font-size: 1.3rem;
+    background: none;
+    border: none;
+    
+}
+
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+  }
+
+#cancel {
+    font-size: 1.6rem;
+    border-radius: 6px;
+}
+
+
+.show {
+    display: block;
+}
+
+
+.tbox {
+    font-size: 1.5rem;
+    max-width: 370px;
+    display: flex;
+
+    margin-bottom: 10px;
+    height: 100px;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: #DAD8FF;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 15px;
+}
+
+#formsubmit {
+    font-size: 1.6rem;
+}
+
+body {
+    background-image: url("/assets/SVG/Asset\ 1.svg");
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
+.category-box {
+    display: flex;
+    font-size: 1rem;
+    border: 2px solid #AB71FF;
+    width: fit-content;
+    justify-content: center;
+    border-radius: 25px;
+    background-color: #AB71FF;
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.alignment {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+}
+
+.tinputbox {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.tcreatecancel {
+    display: flex;
+    justify-content: space-between;
+}
+
+#tdescription {
+    border: 1px solid #ccc;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.task-box {
+    text-decoration: none;
+    color: black;
+}
+
+.alignment-left {
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+}
+.cross {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 0%;
+    width: 90%;
+}
+
+.delete-btn {
+    background-color: #DAD8FF;
+    border: none;
+    font-size: 2rem;
+    height: 30px;
+    padding-left: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 700px) {
+    nav ul {
+        width: 100%;
+        background: linear-gradient(to right, rgb(177, 80, 185), #a200ff);
+        position: absolute;
+        top: 75px;
+        right: 0;
+        z-index: 2;
+    }
+    nav ul li {
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    nav ul li a {
+        color: #fff;
+    }
+    .menu-icon {
+        padding-right: 20px;
+        display: block;
+    }
+    #menuList {
+        overflow: hidden;
+        transition: 0.5s;
+    }
+    .logo {
+        padding-left: 5px;
+    }
+
+}
