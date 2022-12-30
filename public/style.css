@@ -199,6 +199,12 @@ nav {
     width: 50%;
 }
 
+.call h2 b{
+    color: #6C63FF;
+    font-size: 3rem;
+    width: 50%;
+}
+
 .getstarted2 {
     font-size: 1.5rem;
     border-radius: 55px;
@@ -242,6 +248,7 @@ footer {
 
 
 @media only screen and (max-width: 700px) {
+
     #reverse {
         flex-direction: column-reverse;
     }
@@ -362,6 +369,14 @@ footer {
         font-size: 2rem;
         width: 80%;
     }
+
+    .call h2 b{
+        color: #6C63FF;
+        font-size: 2rem;
+        width: 80%;
+    }
+
+
 }
 
 @media only screen and (max-width: 2000px) {
