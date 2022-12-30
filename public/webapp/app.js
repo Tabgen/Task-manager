@@ -1,11 +1,15 @@
 document.getElementById("task").onclick = function() {newtask(), on()};
 
-document.getElementById("cancel").onclick = function() {hide(), off()}
+document.getElementById("cancel").onclick = function() {hide(), off()};
 
-
+document.getElementById("hideinfo").onclick = function() {hideinformation(), off()};
 
 function newtask() {
     document.getElementById("taskforum").classList.toggle("show");
+}
+
+function hideinformation() {
+    document.getElementById("taskviews-container").style.display = "none";
 }
 
 //Responsive nav
@@ -21,24 +25,7 @@ function togglemenu() {
     }
 }
 
-//function addstatus() {
-//
-//    let parentdiv = document.getElementById("progress");
-//
-//    const select = parentdiv.querySelectorAll('.tbox');
-//    select.forEach((select) => { 
-//
-//        let divid = select.id;
-//        console.log(divid);
-//
-//        let taskref = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", divid);
-//
-//        updateDoc(taskref, {
-//            Status: 2
-//        });
-//
-//        })
-//};
+
 
 function hide() {
     document.getElementById("overlay").style.display = "none";
@@ -74,4 +61,3 @@ function off() {
     document.getElementById("overlay").style.display = "none";
 }
 
-//document.getElementById("progress").ondrop = function() {drop(ev)};

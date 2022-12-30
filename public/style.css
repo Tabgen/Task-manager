@@ -270,7 +270,7 @@ footer {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 0px;
+        margin-top: -120px;
     }
 
     .text-container h2 {
@@ -308,7 +308,7 @@ footer {
     }
 
     .s2-container {
-        width: 55%;
+        width: 35%;
         gap: 3rem;
         font-size: 0.4rem;
     }

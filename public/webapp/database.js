@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { getFirestore, addDoc, getDocs, setDoc, doc, deleteDoc, collection, query, where, updateDoc} from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
+import { getFirestore, addDoc, getDocs, getDoc, setDoc, doc, deleteDoc, collection, query, where, updateDoc} from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -34,23 +34,22 @@ let taskid = 0;
 const saveref = collection(db, 'users/', userid, "prosjekt", prosjektid, "save");
 const q = query(saveref, where("task", "!=", ""));
 
-
-
-
 const querySnapshot = await getDocs(q);
 querySnapshot.forEach((docs) => {
+
   // doc.data() is never undefined for query doc snapshots
   const div = document.createElement("div");
   let a = document.createElement("div");
   let div1 = document.createElement("div");
   let btn = document.createElement("button");
   let div2 = document.createElement("div");
+  let div3 = document.createElement("div");
 
   a.setAttribute("href", "#test");
   taskid += 1;
   
   const category = document.createElement("div");
-  const task  = document.createElement("div");
+  const task  = document.createElement("button");
 
   a.className = "task-box";
   category.className = "category-box";
@@ -64,15 +63,36 @@ querySnapshot.forEach((docs) => {
   let value = docs.data().task;
   let categoryname = docs.data().category;
   let descriptionname = docs.data().description;
+
   btn.id = "delete";
   let bid = btn.id;
+  task.id = "visible";
   task.append(value);
+  task.onclick = function() {
+    document.getElementById("taskviews-container").style.display = "block"; 
+    document.getElementById("overlay").style.display = "block";
+
+    let tasknames = document.getElementById("tasknameview");
+    let taskcategorys = document.getElementById("taskcategoryview");
+    let taskdescriptions = document.getElementById("taskdescriptionview");
+
+    let tnameview = document.getElementById("visible");
+    tasknames.innerHTML = value;
+    taskcategorys.innerHTML = categoryname;
+    taskdescriptions.innerHTML = descriptionname;
+  };  
+  
+  div3.id = value;
+  div3.className = "description-info";
+  div3.innerHTML = descriptionname;
   a.append(task);
   category.append(categoryname);
   div2.append(a);
   div2.append(category);
   div1.append(div2)
   div1.append(btn);
+  div1.append(div3);
+
   
   div.id = value;
   div.className = "tbox";
@@ -98,14 +118,14 @@ querySnapshot.forEach((docs) => {
     let removeid = document.getElementById(value);
     deleteDoc(test2);
     removeid.remove();
-  
-}
+
+  }
+
 })
 
 
 
 function taskcreation() {
-    
   const div = document.createElement("div");
   let a = document.createElement("div");
   let div1 = document.createElement("div");
@@ -113,10 +133,21 @@ function taskcreation() {
   let div2 = document.createElement("div");
 
   a.setAttribute("href", "#test");
+  let guid = () => {
+    let s4 = () => {
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+    }
+    //return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+  }
   taskid += 1;
+  let newtaskid = guid();
+  console.log(guid());
   
   const category = document.createElement("div");
-  const task  = document.createElement("div");
+  const task  = document.createElement("button");
 
   a.className = "task-box";
   category.className = "category-box";
@@ -126,7 +157,7 @@ function taskcreation() {
   btn.className = "delete-btn";
   div2.className = "cross";
 
-
+  task.id = "visible";
   let value = tname.value;
   let categoryname = tcategory.value;
   let descriptionname = tdescription.value;
@@ -140,7 +171,7 @@ function taskcreation() {
   div1.append(div2)
   div1.append(btn);
   
-  div.id = value;
+  div.id = newtaskid;
   div.className = "tbox";
   div.setAttribute("draggable", "true");
   div.setAttribute("ondragstart","drag(event)");
@@ -169,9 +200,10 @@ function taskcreation() {
             task: value,
             category: categoryname,
             description: descriptionname,
-            status: "0"
+            status: "0",
         
     });
+
 
 }
 
@@ -250,3 +282,4 @@ document.getElementById("complete").ondrop = function() {addstatus(), drop(event
 function off() {
     document.getElementById("overlay").style.display = "none";
 }
+
