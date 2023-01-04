@@ -82,19 +82,10 @@ querySnapshot.forEach((docs) => {
             const saveref1 = collection(db, 'users/', userid, "prosjekt", projectname, "save");
             const q = query(saveref1, where("task", "!=", ""));
                    
-            //const querySnapshot1 = getDocs(q);
-            //querySnapshot1.forEach((docs1) => {
-            //    let deletecollection = docs1.id;
-            //    deleteDoc(deletecollection);
-            //})
-
             deleteDoc(test1);
             removeid.remove();
             
-            //må finne en bedre løsning tror det er smartest å bare slette divene når den blir executa og må slette alle subcollectionsa ikke bare dokumentet
-            //setTimeout(function(){
-            //    window.location.reload();
-            // }, 1000);
+
           }else {
             window.location.href = "/webapp/index.html";
           }

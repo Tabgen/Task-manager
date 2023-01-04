@@ -149,6 +149,20 @@ function taskcreation() {
   const category = document.createElement("div");
   const task  = document.createElement("button");
 
+  task.onclick = function() {
+    document.getElementById("taskviews-container").style.display = "block"; 
+    document.getElementById("overlay").style.display = "block";
+
+    let tasknames = document.getElementById("tasknameview");
+    let taskcategorys = document.getElementById("taskcategoryview");
+    let taskdescriptions = document.getElementById("taskdescriptionview");
+
+    let tnameview = document.getElementById("visible");
+    tasknames.innerHTML = value;
+    taskcategorys.innerHTML = categoryname;
+    taskdescriptions.innerHTML = descriptionname;
+  };  
+
   a.className = "task-box";
   category.className = "category-box";
   div1.className = "alignment-left";
@@ -170,8 +184,8 @@ function taskcreation() {
   div2.append(category);
   div1.append(div2)
   div1.append(btn);
-  
-  div.id = newtaskid;
+
+  div.id = value;
   div.className = "tbox";
   div.setAttribute("draggable", "true");
   div.setAttribute("ondragstart","drag(event)");
@@ -229,7 +243,7 @@ function addstatus() {
             });
 
             })
-        }, 2000);
+        }, 100);
 
     setTimeout(() => {  
         let parentdiv = document.getElementById("complete");
@@ -247,7 +261,7 @@ function addstatus() {
             });
     
             })
-        }, 2000);
+        }, 100);
         
     setTimeout(() => {  
         let parentdiv = document.getElementById("tasks");
@@ -265,7 +279,7 @@ function addstatus() {
             });
      
             })
-        }, 2000);
+        }, 100);
 };
 
 function drop(ev) {

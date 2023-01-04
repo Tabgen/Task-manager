@@ -42,12 +42,10 @@ function createaccounts() {
           // save data into real time database
             set(ref(database, 'users/' + user.uid), {
                 email: email,
-                password: password
             })
 
             setDoc(doc(db, 'users/' + user.uid), {
                 email: email,
-                password: password
             })
                 .then(() => {
                     // Data saved successfully!
