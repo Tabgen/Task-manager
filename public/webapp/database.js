@@ -63,6 +63,7 @@ querySnapshot.forEach((docs) => {
   let value = docs.data().task;
   let categoryname = docs.data().category;
   let descriptionname = docs.data().description;
+  let delid = docs.data().delid;
 
   btn.id = "delete";
   let bid = btn.id;
@@ -111,7 +112,7 @@ querySnapshot.forEach((docs) => {
 
   document.getElementById("taskforum").classList.remove("show");
   console.log(docs.id, " => ", docs.data());
-  let buttonid = document.getElementById("delete");
+  let buttonid = document.getElementById(delid);
 
   buttonid.onclick = function(e) {
     let test2 = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value);
@@ -192,7 +193,7 @@ function taskcreation() {
   div.append(div1);
   document.getElementById("tasks").appendChild(div);
   document.getElementById("taskforum").classList.remove("show");
-  let buttonid = document.getElementById("delete");
+  let buttonid = document.getElementById(newtaskid);
 
   buttonid.onclick = function(e) {
     let test2 = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value);
@@ -215,6 +216,7 @@ function taskcreation() {
             category: categoryname,
             description: descriptionname,
             status: "0",
+            delid: newtaskid,
         
     });
 
