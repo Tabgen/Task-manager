@@ -12,10 +12,6 @@ function hideinformation() {
     document.getElementById("taskviews-container").style.display = "none";
 }
 
-//Responsive nav
-var menuList = document.getElementById("menuList")
-
-menuList.style.maxHeight = "0px"
 
 function togglemenu() {
     if (menuList.style.maxHeight == "0px") {

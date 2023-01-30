@@ -27,7 +27,7 @@ let projectname = sessionStorage.getItem("projectname");
 let id = sessionStorage.getItem("id");
 let prosjektid = sessionStorage.getItem("prosjektid");
 
-console.log(prosjektid);
+
 
 let taskid = 0;
 
@@ -65,7 +65,7 @@ querySnapshot.forEach((docs) => {
   let descriptionname = docs.data().description;
   let delid = docs.data().delid;
 
-  btn.id = "delete";
+  btn.id = delid;
   let bid = btn.id;
   task.id = "visible";
   task.append(value);
@@ -111,16 +111,15 @@ querySnapshot.forEach((docs) => {
     
 
   document.getElementById("taskforum").classList.remove("show");
-  console.log(docs.id, " => ", docs.data());
-  //let buttonid = document.getElementById(delid);
+  let buttonid = document.getElementById(delid);
 
-  //buttonid.onclick = function(e) {
-  //  let test2 = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value);
-  //  let removeid = document.getElementById("value");
-  //  deleteDoc(test2);
-  //  removeid.remove();
-//
-  //}
+  buttonid.onclick = function(e) {
+    let test2 = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value);
+    let removeid = document.getElementById(value);
+    deleteDoc(test2);
+    removeid.remove();
+
+  }
 
 })
 
@@ -145,7 +144,7 @@ function taskcreation() {
   }
   taskid += 1;
   let newtaskid = guid();
-  console.log(guid());
+
   
   const category = document.createElement("div");
   const task  = document.createElement("button");
@@ -176,7 +175,7 @@ function taskcreation() {
   let value = tname.value;
   let categoryname = tcategory.value;
   let descriptionname = tdescription.value;
-  btn.id = "delete";
+  btn.id = newtaskid;
   let bid = btn.id;
   task.append(value);
   a.append(task);
@@ -193,14 +192,14 @@ function taskcreation() {
   div.append(div1);
   document.getElementById("tasks").appendChild(div);
   document.getElementById("taskforum").classList.remove("show");
-  //let buttonid = document.getElementById(newtaskid);
-//
-  //buttonid.onclick = function(e) {
-  //  let test2 = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value);
-  //  let removeid = document.getElementById(value);
-  //  deleteDoc(test2);
-  //  removeid.remove();
-  //}
+  let buttonid = document.getElementById(newtaskid);
+
+  buttonid.onclick = function(e) {
+    let test2 = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value);
+    let removeid = document.getElementById(value);
+    deleteDoc(test2);
+    removeid.remove();
+  }
 
     document.getElementById("tasks").appendChild(div);
     document.getElementById("taskforum").classList.remove("show");
@@ -236,7 +235,7 @@ function addstatus() {
         select.forEach((select) => { 
 
             let divid = select.id;
-            console.log(divid);
+
 
             let taskref = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", divid);
 
@@ -254,7 +253,7 @@ function addstatus() {
         select.forEach((select) => { 
     
             let divid = select.id;
-            console.log(divid);
+
     
             let taskref = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", divid);
     
@@ -272,7 +271,7 @@ function addstatus() {
         select.forEach((select) => { 
     
             let divid = select.id;
-            console.log(divid);
+
     
             let taskref = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", divid);
     
