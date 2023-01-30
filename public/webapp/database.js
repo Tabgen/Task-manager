@@ -112,15 +112,15 @@ querySnapshot.forEach((docs) => {
 
   document.getElementById("taskforum").classList.remove("show");
   console.log(docs.id, " => ", docs.data());
-  let buttonid = document.getElementById(delid);
+  //let buttonid = document.getElementById(delid);
 
-  buttonid.onclick = function(e) {
-    let test2 = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value);
-    let removeid = document.getElementById(value);
-    deleteDoc(test2);
-    removeid.remove();
-
-  }
+  //buttonid.onclick = function(e) {
+  //  let test2 = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value);
+  //  let removeid = document.getElementById("value");
+  //  deleteDoc(test2);
+  //  removeid.remove();
+//
+  //}
 
 })
 
@@ -193,14 +193,14 @@ function taskcreation() {
   div.append(div1);
   document.getElementById("tasks").appendChild(div);
   document.getElementById("taskforum").classList.remove("show");
-  let buttonid = document.getElementById(newtaskid);
-
-  buttonid.onclick = function(e) {
-    let test2 = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value);
-    let removeid = document.getElementById(value);
-    deleteDoc(test2);
-    removeid.remove();
-}
+  //let buttonid = document.getElementById(newtaskid);
+//
+  //buttonid.onclick = function(e) {
+  //  let test2 = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value);
+  //  let removeid = document.getElementById(value);
+  //  deleteDoc(test2);
+  //  removeid.remove();
+  //}
 
     document.getElementById("tasks").appendChild(div);
     document.getElementById("taskforum").classList.remove("show");
