@@ -10,6 +10,13 @@ Task Organized bruker Firebase og JavaScript for å sikre datasynkronisering i s
     * Organiser oppgaver i kolonner og spor fremgangen
     * Samarbeid med teammedlemmer
 
+## Tech Stack:
+   * HTML
+   * CSS
+   * JavaScript
+   * Firebase
+   * AnimateOnScroll
+
 ## Hvorfor Firebase og JavaScript?
 Firebase ble valgt som backend for dette prosjektet på grunn av dets sanntidsdatasynkroniseringsmuligheter, skalerbarhet og brukervennlighet. Med Firebase synkroniseres endringer som gjøres i oppgavedataene automatisk på tvers av alle tilkoblede enheter, slik at teammedlemmer kan jobbe sømløst sammen.
 
