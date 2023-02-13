@@ -195,9 +195,13 @@ function taskcreation() {
   let buttonid = document.getElementById(newtaskid);
 
   buttonid.onclick = function(e) {
-    let test2 = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value);
+    if (userid != null) {
+      let test2 = doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value);
+      let removeid = document.getElementById(value);
+      deleteDoc(test2);
+      removeid.remove();
+    }
     let removeid = document.getElementById(value);
-    deleteDoc(test2);
     removeid.remove();
   }
 
@@ -209,6 +213,7 @@ function taskcreation() {
 
     //writes to database
 
+  if (userid != null) {
     setDoc(
         doc(db, 'users/', userid, "prosjekt", prosjektid, "save", value), {
             task: value,
@@ -216,11 +221,10 @@ function taskcreation() {
             description: descriptionname,
             status: "0",
             delid: newtaskid,
-        
     });
+  };
 
-
-}
+};
 
 
 
@@ -288,7 +292,7 @@ function drop(ev) {
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
     
-}
+};
 
 document.getElementById("tasks").ondrop = function() {addstatus(), drop(event)};
 document.getElementById("progress").ondrop = function() {addstatus(), drop(event)};
@@ -296,5 +300,5 @@ document.getElementById("complete").ondrop = function() {addstatus(), drop(event
 
 function off() {
     document.getElementById("overlay").style.display = "none";
-}
+};
 

@@ -22,7 +22,15 @@ const db = getFirestore();
 const auth = getAuth();
 const database = getDatabase(app);
 
-let userid = "";
+let userid = sessionStorage.getItem("userid");
+
+if (userid != null) {
+    window.location.href = "/lagringside/index.html";
+}else {
+    userid = "";
+}
+
+userid = "";
 
 
 
