@@ -6,9 +6,9 @@ Task Organized bruker Firebase og JavaScript for å sikre datasynkronisering i s
 
 ## Egenskaper:
 
-    * Opprett og administrer oppgaver med detaljerte beskrivelser
-    * Organiser oppgaver i kolonner og spor fremgangen
-    * Samarbeid med teammedlemmer
+* Opprett og administrer oppgaver med detaljerte beskrivelser
+* Organiser oppgaver i kolonner og spor fremgangen
+* Samarbeid med teammedlemmer
 
 ## Tech Stack:
    * HTML
