@@ -1,7 +1,7 @@
 # Task Organized - www.taskorganized.com
 
 ## Prosjektoppsummering:
-Task Organized er et nettbasert verktøy utviklet for å hjelpe team med å administrere prosjektene sine effektivt. Denne applikasjonen gir et enkelt og intuitivt grensesnitt for brukere til å lage oppgaver og organisere dem i kategorier og status kolonner. 
+Task Organized er et nettbasert verktøy utviklet for å hjelpe personer med å administrere prosjektene sine effektivt. Denne applikasjonen gir et enkelt og intuitivt grensesnitt for brukere til å lage oppgaver og organisere dem i kategorier og status kolonner.
 Task Organized bruker Firebase og JavaScript for å sikre datasynkronisering i sanntid og en sømløs brukeropplevelse.
 
 ## Egenskaper:
