@@ -25,5 +25,5 @@ Firebase ble valgt som backend for dette prosjektet på grunn av dets sanntidsda
 
 JavaScript ble brukt til frontend-utviklingen for å gi et responsivt og dynamisk brukergrensesnitt. Kombinasjonen av Firebase og JavaScript gjorde det mulig for oss å bygge et raskt og pålitelig nettbasert verktøy som er enkelt å bruke og kan nås fra alle enheter med internettforbindelse.
 
-## Konklusjon
-Avslutningsvis er Task Organized et omfattende verktøy som kombinerer kraften til Firebase og JavaScript for å bringe fordelene med smidig prosjekt organisering til team overalt.
+## **Konklusjon**
+Task Organized er ble et lett og brukervennlig verktøy som jeg er fornøyd med. Selv om når jeg ser tilbake på prosjektet og blir nesten litt flau på hvordan jeg løst ting så er jeg også stolt over hvor brukbart prosjektet til slutt. Så for å være mitt første JavaScript prosjekt så er jeg fornøyd.
