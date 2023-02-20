@@ -9,9 +9,9 @@ Jeg lagde dette prosjektet fordi jeg trengte et sted å organisere oppgavene min
 
 ## Egenskaper
 
-* Oprette prosjekter
+* Opprette prosjekter
 * Slette prosjekter
-* Opprett oppgaver med detaljerte beskrivelser
+* Opprette oppgaver med detaljerte beskrivelser
 * Slette oppgaver
 * Organiser oppgaver i 3 ulike kolonner ("Tasks", "In progress", "completed")
 
