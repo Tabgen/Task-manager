@@ -9,9 +9,11 @@ Jeg lagde dette prosjektet fordi jeg trengte et sted å organisere oppgavene min
 
 ## Egenskaper
 
-* Opprett og administrer oppgaver med detaljerte beskrivelser
-* Organiser oppgaver i kolonner og spor fremgangen
-* Samarbeid med teammedlemmer
+* Oprette prosjekter
+* Slette prosjekter
+* Opprett oppgaver med detaljerte beskrivelser
+* Slette oppgaver
+* Organiser oppgaver i 3 ulike kolonner ("Tasks", "In progress", "completed")
 
 ## Tech Stack
    * HTML
