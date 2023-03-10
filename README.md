@@ -8,7 +8,6 @@ Task Organized bruker Firebase og JavaScript for å sikre datasynkronisering i s
 Jeg lagde dette prosjektet fordi jeg trengte et sted å organisere oppgavene mine samtidig som en unnskyldning for å starte å programmere i JavaScript.
 
 ## Egenskaper
-
 * Opprette prosjekter
 * Slette prosjekter
 * Opprette oppgaver med detaljerte beskrivelser
